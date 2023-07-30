@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+main {
+    @apply text-center mx-auto text-gray-700 dark:text-gray-300 p-4
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @apply dark:text-sky-300 text-sky-700
+}
+
+h1 {
+    @apply text-6xl font-thin uppercase my-16
+}
+
+label {
+    @apply block mb-2 text-sm font-medium text-gray-900 dark:text-white
+}
+
+[type="text"],
+input {
+    @apply outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+    focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600
+    dark:placeholder-gray-400 m-2.5 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
+}
+
+body {
+    @apply bg-white dark:bg-stone-800
+}
+
+p {
+    @apply text-gray-900 dark:text-gray-100
+}
+
+button {
+    @apply bg-sky-500 dark:bg-sky-300 rounded p-3 m-3 text-white dark:text-stone-800;
+    @apply transition-all hover:scale-105 hover:bg-sky-600 hover:dark:bg-sky-200
+}
