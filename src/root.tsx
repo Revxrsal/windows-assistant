@@ -2,6 +2,7 @@
 import {Suspense} from "solid-js";
 import {Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title,} from "solid-start";
 import "./root.css";
+import Sidebar from "~/components/sidebar/Sidebar";
 
 export default function Root() {
     return (
@@ -14,9 +15,12 @@ export default function Root() {
             <Body>
                 <Suspense>
                     <ErrorBoundary>
-                        <Routes>
-                            <FileRoutes/>
-                        </Routes>
+                        <div class={"content-container"}>
+                            <Sidebar/>
+                            <Routes>
+                                <FileRoutes/>
+                            </Routes>
+                        </div>
                     </ErrorBoundary>
                 </Suspense>
                 <Scripts/>

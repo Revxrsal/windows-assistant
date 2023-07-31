@@ -14,6 +14,9 @@ dependencies:
   '@tauri-apps/api':
     specifier: ^1.4.0
     version: 1.4.0
+  solid-icons:
+    specifier: ^1.0.11
+    version: 1.0.11(solid-js@1.7.8)
   solid-js:
     specifier: ^1.7.8
     version: 1.7.8
@@ -4210,6 +4213,15 @@ packages:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
     engines: {node: '>=8'}
     dev: true
+
+  /solid-icons@1.0.11(solid-js@1.7.8):
+    resolution: {integrity: sha512-shEL5Otrl73LPZukpanJKi6ISnQhpIvhqqAb8haKyCGrixHOYC6yGfNkSE7jpkKSikZ0rGtSMRiFETRrec2Uzw==}
+    engines: {node: '>= 16'}
+    peerDependencies:
+      solid-js: '*'
+    dependencies:
+      solid-js: 1.7.8
+    dev: false
 
   /solid-js@1.7.8:
     resolution: {integrity: sha512-XHBWk1FvFd0JMKljko7FfhefJMTSgYEuVKcQ2a8hzRXfiuSJAGsrPPafqEo+f6l+e8Oe3cROSpIL6kbzjC1fjQ==}
