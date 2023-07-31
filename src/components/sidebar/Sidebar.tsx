@@ -2,8 +2,8 @@ import SidebarItem from "~/components/sidebar/SidebarItem";
 import {BsDatabaseAdd, BsFolder, BsGear, BsPinMapFill} from "solid-icons/bs";
 import SidebarTitle from "~/components/sidebar/SidebarTitle";
 import HorizontalDivider from "~/components/HorizontalDivider";
-import SidebarSubtitle from "~/components/sidebar/SidebarSubtitle";
 import {useLocation} from "@solidjs/router";
+import SidebarSubtitle from "~/components/sidebar/SidebarSubtitle";
 
 export default function Sidebar() {
     const location = useLocation();
@@ -29,10 +29,10 @@ export default function Sidebar() {
                     isActive={isPathOpen("/my-actions")}
                 />
 
-                {/*<SidebarSubtitle title={"Folders"}/>*/}
-                {/*<SidebarItem label={"Travel"} icon={<BsFolder size={24}/>}/>*/}
-                {/*<SidebarItem label={"Photos"} icon={<BsFolder size={24}/>}/>*/}
-                {/*<SidebarItem label={"Fitness"} icon={<BsFolder size={24}/>}/>*/}
+                <SidebarSubtitle title={"Folders"}/>
+                <SidebarItem label={"Travel"} icon={<BsFolder size={24}/>}/>
+                <SidebarItem label={"Photos"} icon={<BsFolder size={24}/>}/>
+                <SidebarItem label={"Fitness"} icon={<BsFolder size={24}/>}/>
             </div>
         </>
     )

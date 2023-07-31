@@ -21,7 +21,7 @@ body {
 
 @layer components {
     .sidebar {
-        @apply absolute top-0 left-0 h-full w-[300px]
+        @apply fixed top-0 left-0 h-screen w-[300px]
         p-2 overflow-y-auto text-center
         bg-stone-900
     }
