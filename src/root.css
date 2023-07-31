@@ -21,7 +21,7 @@ body {
 
 @layer components {
     .sidebar {
-        @apply absolute top-0 left-0 h-full w-[300px]
+        @apply absolute top-0 left-0 h-full w-[320px]
         p-2 overflow-y-auto text-center
         bg-stone-900
     }
@@ -40,5 +40,13 @@ body {
         @apply flex flex-col
         h-full w-full
         overflow-hidden;
+    }
+
+    .text {
+        @apply text-stone-800 dark:text-stone-50
+    }
+
+    .title {
+        @apply m-10 font-bold text text-5xl ;
     }
 }
