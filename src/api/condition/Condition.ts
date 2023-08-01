@@ -1,3 +1,6 @@
+import {Component, JSX} from "solid-js";
+import {IconProps} from "solid-icons";
+
 /**
  * Represents a condition that evaluates to a boolean.
  */
@@ -22,7 +25,12 @@ export default interface Condition {
      * The class displayed for the background for the icon of the
      * condition.
      */
-    class: string
+    backgroundClass: string
+
+    /**
+     * The icon of the condition
+     */
+    icon: Component<IconProps>
 
     /**
      * Evaluates this condition. This function should generally
