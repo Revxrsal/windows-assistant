@@ -6,8 +6,8 @@ import Sidebar from "~/components/sidebar/Sidebar";
 import { appWindow } from '@tauri-apps/api/window'
 
 import { BsChevronDoubleDown } from 'solid-icons/bs'
-import { BsAspectRatioFill } from 'solid-icons/bs'
 import { FaSolidXmark } from 'solid-icons/fa'
+import { TbRectangle } from 'solid-icons/tb'
 
 export default function Root() {
     onMount(() => {
@@ -33,7 +33,7 @@ export default function Root() {
                         <BsChevronDoubleDown />
                     </div>
                     <div class="titlebar-button" id="titlebar-maximize">
-                        <BsAspectRatioFill />
+                        <TbRectangle />
                     </div>
                     <div class="titlebar-button" id="titlebar-close">
                         <FaSolidXmark />
