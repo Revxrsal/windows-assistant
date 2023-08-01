@@ -16,7 +16,7 @@ export default function Home() {
                 <input type="text" placeholder={"Shortcut name..."}
                        class="border-none outline-none
                        text-blue-800 dark:text-blue-400
-                       bg-gray-100 dark:bg-stone-800"/>
+                       bg-stone-100 dark:bg-stone-800"/>
             </div>
             <p class="mx-12 text font-bold text-xl">When...</p>
             <div class={"flex flex-col m-4"}>
