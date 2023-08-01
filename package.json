@@ -3,7 +3,9 @@
   "scripts": {
     "dev": "solid-start dev",
     "build": "solid-start build",
-    "start": "solid-start start"
+    "start": "solid-start start",
+    "tauriDev": "tauri dev",
+    "tauriBuild": "tauri build"
   },
   "type": "module",
   "devDependencies": {
