@@ -9,7 +9,7 @@ function Subtitle(props: { text: string }) {
 
 export default function NewRoutine() {
     return (
-        <main class="flex h-full flex-col">
+        <main>
             <Subtitle text="New routine"/>
             <div class={"justify-center flex flex-col title m-12 mt-0"}>
                 <input type="text" placeholder={"Routine name..."}

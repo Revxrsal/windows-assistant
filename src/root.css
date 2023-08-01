@@ -11,8 +11,8 @@
 }
 
 main {
-    @apply pl-[300px]
     /* For the sidebar */
+    @apply pl-[300px] flex h-full flex-col
 }
 
 body {
