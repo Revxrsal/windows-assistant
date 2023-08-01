@@ -4,6 +4,7 @@ import SidebarTitle from "~/components/sidebar/SidebarTitle";
 import HorizontalDivider from "~/components/HorizontalDivider";
 import {useLocation} from "@solidjs/router";
 import SidebarSubtitle from "~/components/sidebar/SidebarSubtitle";
+import {FaSolidForwardFast} from "solid-icons/fa";
 
 export default function Sidebar() {
     const location = useLocation();
@@ -25,7 +26,7 @@ export default function Sidebar() {
                 />
                 <SidebarItem
                     label={"Quick Actions"}
-                    icon={<BsGear size={24}/>}
+                    icon={<FaSolidForwardFast size={24}/>}
                     isActive={isPathOpen("/my-actions")}
                 />
 
