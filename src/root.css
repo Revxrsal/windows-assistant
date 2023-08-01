@@ -19,6 +19,30 @@ body {
     @apply bg-stone-100 dark:bg-stone-800;
 }
 
+.titlebar {
+    height: 30px;
+    background: #292524;
+    user-select: none;
+    display: flex;
+    justify-content: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.titlebar-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    filter: invert(100%);
+}
+.titlebar-button:hover {
+    /* Inverted background color: #d0d6d5, we are making it a bit brighter though */
+    background: #cad1d0;
+}
+
 @layer components {
     .sidebar {
         @apply fixed top-0 left-0 h-screen w-[300px]
