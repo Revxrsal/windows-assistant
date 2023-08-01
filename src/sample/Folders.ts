@@ -1,9 +1,9 @@
-import Folder from "~/api/folders/Folder";
+import Folder, {createFolder} from "~/api/folders/Folder";
 
 const Folders: Folder[] = [
-    {name: "Photos"},
-    {name: "Travel"},
-    {name: "Fitness"},
+    createFolder("Photos"),
+    createFolder("Travel"),
+    createFolder("Fitness"),
 ]
 
 export default Folders;
