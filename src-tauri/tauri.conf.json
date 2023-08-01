@@ -40,7 +40,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
+      "identifier": "io.github.windowsassistant",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -66,12 +66,14 @@
     },
     "windows": [
       {
+        "title": "Windows Assistant",
+        "resizable": true,
         "decorations": false,
         "fullscreen": false,
-        "height": 600,
-        "resizable": true,
-        "title": "Windows Assistant",
-        "width": 800
+        "minWidth": 1000,
+        "width": 1000,
+        "minHeight": 600,
+        "height": 600
       }
     ]
   }
