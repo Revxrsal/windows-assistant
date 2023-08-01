@@ -23,7 +23,7 @@ export default function TitleBar() {
         <div class="titlebar-button" ref={maximizeButton}>
             <TbRectangle/>
         </div>
-        <div class="titlebar-button hover:bg-red-300 dark:hover:bg-red-500" ref={closeButton}>
+        <div class="titlebar-button hover:bg-red-500" ref={closeButton}>
             <FaSolidXmark/>
         </div>
     </div>
