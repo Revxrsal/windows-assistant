@@ -14,7 +14,7 @@ export interface TimeConditionData {
 
 export class TimeCondition implements Condition {
     id = TIME_ID
-    name = NAME;
+    displayName = NAME;
     description = DESC;
     backgroundClass = CLASS;
     icon = ICON

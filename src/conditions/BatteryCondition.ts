@@ -14,7 +14,7 @@ export interface BatteryConditionData {
 
 export class BatteryCondition implements Condition {
     id = BATTERY_ID;
-    name = NAME;
+    displayName = NAME;
     description = DESC;
     backgroundClass = CLASS;
     icon = ICON
