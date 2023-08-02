@@ -46,7 +46,7 @@ export default function Sidebar() {
                     onClick={() => navigate("/actions")}
                 />
 
-                <SidebarSubtitle title={"Folders"}/>
+                <SidebarSubtitle title="Folders"/>
                 <For each={Folders}>{folder =>
                     <ExpandableSidebarItem
                         label={folder.name}
