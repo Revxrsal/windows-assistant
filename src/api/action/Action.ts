@@ -1,4 +1,4 @@
-import DisplayedBlock from "~/api/DisplayedBlock";
+import DisplayedBlock from "~/api/common/DisplayedBlock";
 
 /**
  * Represents an action that runs

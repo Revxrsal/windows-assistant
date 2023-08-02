@@ -1,8 +1,10 @@
 import {BatteryCondition} from "~/conditions/BatteryCondition";
 import Condition from "~/api/condition/Condition";
 import {TimeCondition} from "~/conditions/TimeCondition";
+import Action from "~/api/action/Action";
+import {BEEP_ACTION} from "~/api/action/BeepAction";
 
-const Conditions: Condition[] = [
+export const Conditions: Condition[] = [
     new BatteryCondition({
         battery: 30
     }),
@@ -11,4 +13,6 @@ const Conditions: Condition[] = [
     }),
 ];
 
-export default Conditions;
+export const Actions: Action[] = [
+    BEEP_ACTION
+]
