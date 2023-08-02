@@ -34,13 +34,17 @@ body {
     .sidebar {
         @apply fixed top-0 left-0 h-screen w-[300px]
         p-2 overflow-y-auto text-center
-        bg-stone-900
+        bg-stone-900 select-none
     }
 
     .sidebar-item {
         @apply p-2.5 mt-3 flex items-center rounded-md px-4 duration-150
         cursor-pointer
         hover:bg-blue-600 text-white;
+    }
+
+    .mini-sidebar-item {
+        @apply sidebar-item p-2 mt-2;
     }
 
     .sidebar-item-text {
