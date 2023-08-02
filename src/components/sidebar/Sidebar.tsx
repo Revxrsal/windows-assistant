@@ -21,14 +21,14 @@ export default function Sidebar() {
                 <SidebarTitle title={"Windows Assistant"}/>
                 <HorizontalDivider/>
                 <SidebarItem
-                    label={"Home"}
+                    label="Home"
                     icon={<AiFillHome size={24}/>}
                     isActive={isPathExactly("/")}
                     onClick={() => navigate("/")}
                 />
 
                 <SidebarItem
-                    label={"Routines"}
+                    label="Routines"
                     icon={<BsDatabase size={24}/>}
                     isActive={isPathOpen("/routines")}
                     onClick={() => navigate("/routines")}
@@ -40,7 +40,7 @@ export default function Sidebar() {
                     onClick={() => navigate("/shortcuts")}
                 />
                 <SidebarItem
-                    label={"Quick Actions"}
+                    label="Quick Actions"
                     icon={<FaSolidForwardFast size={24}/>}
                     isActive={isPathOpen("/actions")}
                     onClick={() => navigate("/actions")}
