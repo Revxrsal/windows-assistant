@@ -20,7 +20,7 @@ body {
 }
 
 .titlebar {
-    @apply fixed h-8 select-none flex justify-end top-0 left-0 right-0;
+    @apply fixed h-8 select-none flex justify-end top-0 left-0 right-0 z-10;
 }
 
 .titlebar-button {
@@ -62,6 +62,10 @@ body {
     }
 
     .title {
-        @apply m-10 font-bold text text-5xl ;
+        @apply m-10 font-bold text text-5xl;
+    }
+
+    ::-webkit-scrollbar {
+        @apply hidden
     }
 }
