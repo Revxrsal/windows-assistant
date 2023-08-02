@@ -3,8 +3,7 @@ import SidebarItem, {SidebarItemProps} from "~/components/sidebar/SidebarItem";
 import {FaSolidAngleRight} from "solid-icons/fa";
 
 export default function ExpandableSidebarItem(props: Omit<SidebarItemProps, "trailingIcon">) {
-    const [sideBarProps, ...[divProps]] =
-        splitProps(props, ["label", "isActive", "children", "icon"])
+    const [sideBarProps, divProps] = splitProps(props, ["label", "isActive", "children", "icon"])
     const [isExpanded, setExpanded] = createSignal(false);
     const expandedClass = () => isExpanded() ? "rotate-90" : ""
     return (

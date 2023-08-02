@@ -9,7 +9,7 @@ export interface SidebarItemProps extends ComponentProps<"div"> {
 }
 
 export default function SidebarItem(props: SidebarItemProps) {
-    const [local, ...[divProps]] = splitProps(props, ["label", "icon"])
+    const [local, divProps] = splitProps(props, ["label", "icon"])
     const activeClass = () => props.isActive ? "bg-blue-600" : ""
     return (
         <>
