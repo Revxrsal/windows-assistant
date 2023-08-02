@@ -1,24 +1,17 @@
-import {ComponentProps, createSignal, JSX, Show, splitProps} from "solid-js";
-import SidebarItem from "~/components/sidebar/SidebarItem";
-import {BsFolder} from "solid-icons/bs";
+import {createSignal, Show, splitProps} from "solid-js";
+import SidebarItem, {SidebarItemProps} from "~/components/sidebar/SidebarItem";
 import {FaSolidAngleRight} from "solid-icons/fa";
 
-export interface ExpandableSidebarItemProps extends ComponentProps<"div"> {
-    label?: JSX.Element
-    isActive?: boolean
-    children?: JSX.Element
-}
-
-export default function ExpandableSidebarItem(props: ExpandableSidebarItemProps) {
+export default function ExpandableSidebarItem(props: Omit<SidebarItemProps, "trailingIcon">) {
     const [sideBarProps, ...[divProps]] =
-        splitProps(props, ["label", "isActive", "children"])
+        splitProps(props, ["label", "isActive", "children", "icon"])
     const [isExpanded, setExpanded] = createSignal(false);
     const expandedClass = () => isExpanded() ? "rotate-90" : ""
     return (
         <div {...divProps}>
             <SidebarItem
                 label={sideBarProps.label}
-                icon={<BsFolder size={24}/>}
+                icon={props.icon}
                 trailingIcon={<FaSolidAngleRight class={`transition-all duration-150 ${expandedClass()}`}/>}
                 onClick={() => setExpanded(v => !v)}
                 isActive={sideBarProps.isActive}
