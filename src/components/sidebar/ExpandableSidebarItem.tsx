@@ -10,7 +10,7 @@ export default function ExpandableSidebarItem(props: Omit<SidebarItemProps, "tra
         <div {...divProps}>
             <SidebarItem
                 label={sideBarProps.label}
-                icon={props.icon}
+                icon={sideBarProps.icon}
                 trailingIcon={<FaSolidAngleRight class={`transition-all duration-150 ${expandedClass()}`}/>}
                 onClick={() => setExpanded(v => !v)}
                 isActive={sideBarProps.isActive}
