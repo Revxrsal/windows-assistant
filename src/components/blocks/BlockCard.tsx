@@ -1,10 +1,7 @@
-import {JSX} from "solid-js";
+import BlockMetadata from "~/api/block/BlockMetadata";
 
 export interface BlockCardProps {
-    icon: JSX.Element,
-    class: string,
-    title: string,
-    description: string
+    metadata: BlockMetadata
 }
 
 export default function BlockCard(props: BlockCardProps) {
@@ -15,14 +12,14 @@ export default function BlockCard(props: BlockCardProps) {
     h-20 rounded-xl flex drop-shadow-md"
     >
         <div
-            class={`${props.class} w-16 h-16 rounded-full p-4 m-4 justify-center text-center items-center flex`}>
+            class={`${props.metadata.backgroundClass} w-16 h-16 rounded-full p-4 m-4 justify-center text-center items-center flex`}>
             <div class={"text-stone-800 fill-stone-800"}>
-                {props.icon}
+                {props.metadata.icon({size: 28})}
             </div>
         </div>
         <div class={"text"}>
-            <p class={"font-bold text-xl"}>{props.title}</p>
-            <p class={""}>{props.description}</p>
+            <p class={"font-bold text-xl"}>{props.metadata.displayName}</p>
+            <p>{props.metadata.description}</p>
         </div>
     </div>
 }

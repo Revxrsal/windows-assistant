@@ -4,7 +4,7 @@ import {IconProps} from "solid-icons";
 /**
  * Represents a block. This is either a condition or an action
  */
-export default interface DisplayedBlock {
+export default interface BlockMetadata {
 
     /**
      * A unique ID for this block. This is specified in 'ConditionIDs.ts'
