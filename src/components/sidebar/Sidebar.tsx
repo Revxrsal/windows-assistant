@@ -5,6 +5,7 @@ import HorizontalDivider from "~/components/HorizontalDivider";
 import {useLocation, useNavigate} from "@solidjs/router";
 import SidebarSubtitle from "~/components/sidebar/SidebarSubtitle";
 import {FaSolidForwardFast} from "solid-icons/fa";
+import { FaSolidGear } from 'solid-icons/fa'
 import {For} from "solid-js";
 import Folders from "~/sample/Folders";
 import {AiFillHome} from "solid-icons/ai";
@@ -44,6 +45,12 @@ export default function Sidebar() {
                     icon={<FaSolidForwardFast size={24}/>}
                     isActive={isPathOpen("/actions")}
                     onClick={() => navigate("/actions")}
+                />
+                <SidebarItem
+                    label="Settings"
+                    icon={<FaSolidGear size={24} />}
+                    isActive={isPathOpen("/settings")}
+                    onClick={() => navigate("/settings")}
                 />
 
                 <SidebarSubtitle title="Folders"/>
