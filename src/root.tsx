@@ -1,22 +1,11 @@
 // @refresh reload
-import {onMount, Suspense} from "solid-js";
+import {Suspense} from "solid-js";
 import {Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title,} from "solid-start";
 import "./root.css";
 import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
-import {registerConditions} from "~/api/condition/ConditionRegistry";
-import {registerActions} from "~/api/action/ActionRegistry";
-
-/**
- * Registers blocks and conditions
- */
-function registerBlockTypes() {
-    registerConditions();
-    registerActions();
-}
 
 export default function Root() {
-    onMount(() => registerBlockTypes())
     return (
         <Html lang="en">
             <Head>
