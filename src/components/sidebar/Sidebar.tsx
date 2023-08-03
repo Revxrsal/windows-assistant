@@ -1,15 +1,30 @@
 import SidebarItem from "~/components/sidebar/SidebarItem";
-import {BsDatabase, BsFolder, BsPinMapFill} from "solid-icons/bs";
+import {BsDatabase, BsFolder, BsPinMapFill, BsPlus} from "solid-icons/bs";
 import SidebarTitle from "~/components/sidebar/SidebarTitle";
 import HorizontalDivider from "~/components/HorizontalDivider";
 import {useLocation, useNavigate} from "@solidjs/router";
 import SidebarSubtitle from "~/components/sidebar/SidebarSubtitle";
-import {FaSolidForwardFast} from "solid-icons/fa";
-import { FaSolidGear } from 'solid-icons/fa'
-import {For} from "solid-js";
+import {FaSolidForwardFast, FaSolidGear} from "solid-icons/fa";
+import {ComponentProps, For} from "solid-js";
 import Folders from "~/sample/Folders";
 import {AiFillHome} from "solid-icons/ai";
 import ExpandableSidebarItem from "~/components/sidebar/ExpandableSidebarItem";
+import {Routines} from "~/sample/Routines";
+
+interface NewButtonProps extends ComponentProps<"div"> {
+    isActive: boolean,
+    label: string
+}
+
+function NewButton(props: NewButtonProps) {
+    return <div class={`h-8 mini-sidebar-item group ${props.isActive ? "bg-blue-600" : ""}`} {...props}>
+        <BsPlus
+            size={24}
+            class={"group-hover:rotate-90 transition-all duration-300 z-10"}
+        />
+        <span class={"pl-4"}>{props.label}</span>
+    </div>
+}
 
 export default function Sidebar() {
     const location = useLocation();
@@ -31,9 +46,20 @@ export default function Sidebar() {
                 <SidebarItem
                     label="Routines"
                     icon={<BsDatabase size={24}/>}
-                    isActive={isPathOpen("/routines")}
+                    isActive={isPathExactly("/routines")}
                     onClick={() => navigate("/routines")}
-                />
+                >
+                    <NewButton
+                        isActive={isPathExactly("/routines/new")}
+                        onClick={() => navigate("/routines/new")}
+                        label="New routine"
+                    />
+                    <For each={Routines}>{routine =>
+                        <div class={"mini-sidebar-item"} onClick={() => navigate(`/routines/${routine.name}`)}>
+                            {routine.name}
+                        </div>
+                    }</For>
+                </SidebarItem>
                 <SidebarItem
                     label="Shortcuts"
                     icon={<BsPinMapFill size={24}/>}
@@ -48,7 +74,7 @@ export default function Sidebar() {
                 />
                 <SidebarItem
                     label="Settings"
-                    icon={<FaSolidGear size={24} />}
+                    icon={<FaSolidGear size={24}/>}
                     isActive={isPathOpen("/settings")}
                     onClick={() => navigate("/settings")}
                 />
