@@ -45,7 +45,7 @@ export default function NewRoutine() {
                 <For each={state.conditions}>{(condition, index) =>
                     <BlockCard
                         description={condition.description()}
-                        class={"hover:scale-[1.02] transition cursor-pointer"}
+                        class={`hover:scale-[1.02] transition ${condition.metadata.form ? "cursor-pointer" : ""}`}
                         metadata={condition.metadata}
                         onClick={() => {
                             if (condition.metadata.form)
@@ -71,7 +71,7 @@ export default function NewRoutine() {
                 <For each={state.actions}>{(action, index) =>
                     <BlockCard
                         description={action.description()}
-                        class={"hover:scale-[1.02] transition cursor-pointer"}
+                        class={`hover:scale-[1.02] transition ${action.metadata.form ? "cursor-pointer" : ""}`}
                         metadata={action.metadata}
                         onClick={() => {
                             if (action.metadata.form)
