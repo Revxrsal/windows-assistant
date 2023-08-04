@@ -11,12 +11,14 @@ const METADATA: BlockMetadata = {
     displayName: "Beep",
     description: "Plays a beep sound",
     backgroundClass: "bg-sky-500 dark:bg-sky-300",
-    icon: (props) => FaSolidVolumeHigh(props)
+    icon: (props) => FaSolidVolumeHigh(props),
+    createWithNoParams: () => new BeepAction()
 }
 
 export default class BeepAction implements BasicAction {
 
     metadata = METADATA;
+    description = () => "Play a beep sound";
 
     async execute(): Promise<void> {
         return invoke("beep")

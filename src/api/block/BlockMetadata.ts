@@ -1,5 +1,10 @@
 import {Component} from "solid-js";
 import {IconProps} from "solid-icons";
+import {AnyBlock} from "~/api/block/Block";
+
+export interface BlockFormProps {
+    submit: (block: AnyBlock) => void
+}
 
 /**
  * Represents a block. This is either a condition or an action
@@ -31,5 +36,16 @@ export default interface BlockMetadata {
      * The icon of the block
      */
     icon: Component<IconProps>
+
+    /**
+     * The form for configuring this metadata
+     */
+    form?: Component<BlockFormProps>
+
+    /**
+     * A function. This must be specified if 'form'
+     * is not present
+     */
+    createWithNoParams?: () => AnyBlock
 
 }

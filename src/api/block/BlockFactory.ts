@@ -58,4 +58,12 @@ export default class BlockFactory {
     blockToJson(item: AnyBlock): string {
         return JSON.stringify(item.data)
     }
+
+    getRegisteredBlockMetas(): BlockMetadata[] {
+        return Object.values(this.idToMetadata)
+    }
+
+    getMetadata(id: string): BlockMetadata {
+        return this.idToMetadata[id]
+    }
 }

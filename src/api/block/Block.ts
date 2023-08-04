@@ -29,4 +29,13 @@ export interface Block<T> {
      */
     metadata: BlockMetadata
 
+    /**
+     * Returns a description that describes this block with the data it has.
+     *
+     * This *should* use the data. For example, a BatteryCondition's description
+     * will be ("Triggered when battery reaches 30%"), where 30 is specified
+     * in its data.
+     */
+    description: () => string
+
 }
