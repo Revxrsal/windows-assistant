@@ -23,7 +23,7 @@ export default function Home() {
 
     return (
         <main>
-            <button class="mt-8 text" onClick={darkModeToggle}>Click to toggle dark mode</button>
+            <button class="btn btn-blue inline-flex mt-8 text" onClick={darkModeToggle}>Toggle dark mode</button>
         </main>
     )
 }
