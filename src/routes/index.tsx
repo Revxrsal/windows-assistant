@@ -1,26 +1,9 @@
-import {createSignal, Show} from "solid-js";
-import {Portal} from "solid-js/web";
-import BlockCard from "~/components/blocks/BlockCard";
-import {conditions} from "~/api/condition/ConditionRegistry";
-import {clickOutside} from "~/components/directive/clickOutside";
-
-function Dialog(props: { dismiss: () => void }) {
-    return <main ref={el => {
-        clickOutside(el, () => props.dismiss())
-    }} class={"left-0 top-0 z-[1055] h-full w-full outline-none"}>
-        <BlockCard metadata={conditions.getRegisteredBlockMetas()[0]}/>
-    </main>
-}
+import {createSignal} from "solid-js";
 
 export default function Home() {
     const [show, setShow] = createSignal(false);
     return (
         <main>
-            <Show when={show()}>
-                <Portal>
-                    <Dialog dismiss={() => setShow(false)}/>
-                </Portal>
-            </Show>
             <h1 class="text-6xl m-12 font-bold text">Windows Assistant</h1>
             <h2 class="text-4xl m-12 font-bold text">Getting started</h2>
             <button

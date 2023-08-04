@@ -2,11 +2,9 @@ import Condition from "~/api/condition/Condition";
 import {BsClockFill} from "solid-icons/bs";
 import BlockMetadata, {BlockFormProps} from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
-import {data} from "autoprefixer";
 import {createSignal} from "solid-js";
 import BlockForm from "~/api/condition/BlockForm";
 import {RangeInput} from "~/components/RangeInput";
-import {BatteryCondition} from "~/api/condition/BatteryCondition";
 
 const ID = "time"
 

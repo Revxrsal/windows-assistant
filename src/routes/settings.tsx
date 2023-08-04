@@ -1,4 +1,4 @@
-import {preferences, setPreferences} from "~/prefs/preferences";
+import {preferences, setPreferences} from "~/storage/preferences";
 
 export default function Settings() {
     return (

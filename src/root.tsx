@@ -6,7 +6,7 @@ import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {registerConditions} from "~/api/condition/ConditionRegistry";
 import {registerActions} from "~/api/action/ActionRegistry";
-import {preferences} from "~/prefs/preferences";
+import {preferences} from "~/storage/preferences";
 
 /**
  * Registers blocks and conditions

@@ -1,6 +1,6 @@
 import {createStore} from "solid-js/store";
-import {createContext, createEffect} from "solid-js";
-import {isSystemDarkMode} from "~/prefs/darkMode";
+import {createEffect} from "solid-js";
+import {isSystemDarkMode} from "~/util/darkMode";
 
 export interface Preferences {
     darkTheme: boolean
@@ -11,7 +11,7 @@ function createPreferences(): Preferences {
         darkTheme: isSystemDarkMode()
     }
 }
-createContext()
+
 function parsePreferences(): Preferences {
     const json = localStorage.getItem("preferences")
     if (json == null)
