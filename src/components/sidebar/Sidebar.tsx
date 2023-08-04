@@ -26,6 +26,8 @@ function NewButton(props: NewButtonProps) {
     </div>
 }
 
+// TODO: Refactor each section to its own component, for brevity.
+
 export default function Sidebar() {
     const location = useLocation();
     const isPathOpen = (path: string) => location.pathname.startsWith(path);
