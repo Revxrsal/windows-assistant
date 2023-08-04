@@ -36,7 +36,7 @@ export default function NewRoutine() {
                        text-blue-800 dark:text-blue-400
                        bg-stone-100 dark:bg-stone-800"
                        value={state.name}
-                       onChange={e => setState(() => ({name: e.target.value}))}/>
+                       onInput={e => setState(() => ({name: e.target.value}))}/>
             </div>
             <p class="mx-12 text font-bold text-xl">
                 When all the below conditions are met
