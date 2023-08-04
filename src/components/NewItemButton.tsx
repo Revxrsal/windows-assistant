@@ -10,7 +10,7 @@ export interface NewItemButtonProps extends ComponentProps<"button"> {
 export default function NewItemButton(props: NewItemButtonProps) {
     const [local, ...[buttonProps]] = splitProps(props, ["text", "class"])
     return <button
-        class="bg-stone-200 dark:bg-stone-900
+        class="bg-stone-200 dark:bg-stone-900 hover:scale-[1.02] transition
             content-center items-center
             opacity-60
             outline-dotted outline-stone-400
