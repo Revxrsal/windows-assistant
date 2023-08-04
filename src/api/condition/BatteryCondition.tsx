@@ -8,8 +8,10 @@ import {RangeInput} from "~/components/RangeInput";
 
 const ID = "battery"
 
-export function BatteryForm(props: BlockFormProps) {
-    const [value, setValue] = createSignal(5);
+export function BatteryForm(props: BlockFormProps<BatteryConditionData>) {
+    const [value, setValue] = createSignal(
+        props.data?.battery || 5
+    );
 
     function submit() {
         props.submit(new BatteryCondition({
@@ -18,12 +20,16 @@ export function BatteryForm(props: BlockFormProps) {
     }
 
     return (
-        <BlockForm submit={submit} title={"Battery level"}>
-            <p class="mx-4 mt-12 mb-0 text font-semibold">
+        <BlockForm
+            configProps={props}
+            submit={submit}
+            title={"Battery level"}
+        >
+            <p class="mt-6 mb-0 text text-xl font-semibold">
                 When battery reaches...
             </p>
             <RangeInput
-                class="m-12 w-64"
+                class="mt-6 w-64"
                 label={value() + "%"}
                 value={value}
                 setValue={setValue}

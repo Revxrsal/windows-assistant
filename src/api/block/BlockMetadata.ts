@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Component} from "solid-js";
 import {IconProps} from "solid-icons";
 import {AnyBlock} from "~/api/block/Block";
 
-export interface BlockFormProps {
+export interface BlockFormProps<T> {
     submit: (block: AnyBlock) => void
+    replace: boolean
+    data?: T
 }
 
 /**
@@ -40,7 +43,7 @@ export default interface BlockMetadata {
     /**
      * The form for configuring this metadata
      */
-    form?: Component<BlockFormProps>
+    form?: Component<BlockFormProps<any>>
 
     /**
      * A function. This must be specified if 'form'

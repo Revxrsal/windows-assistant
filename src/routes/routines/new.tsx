@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 import NewItemButton from "~/components/NewItemButton";
-import {createSignal, For} from "solid-js";
-import {createStore, reconcile} from "solid-js/store";
+import {For} from "solid-js";
+import {createStore} from "solid-js/store";
 import BlockCard from "~/components/blocks/BlockCard";
 import {AnyCondition} from "~/api/condition/Condition";
 import {AnyAction} from "~/api/action/Action";
 import {useNavigate} from "@solidjs/router";
-import {conditions} from "~/api/condition/ConditionRegistry";
 
 function Subtitle(props: { text: string }) {
     return <p class="mx-12 my-7 text font-bold text-2xl">{props.text}</p>
@@ -43,30 +42,56 @@ export default function NewRoutine() {
                 When all the below conditions are met
             </p>
             <div class={"flex flex-col m-4"}>
+                <For each={state.conditions}>{(condition, index) =>
+                    <BlockCard
+                        description={condition.description()}
+                        class={"hover:scale-[1.02] transition cursor-pointer"}
+                        metadata={condition.metadata}
+                        onClick={() => {
+                            if (condition.metadata.form)
+                                navigate(`/pick/conditions/${condition.metadata.id}`, {
+                                    state: {
+                                        replaceIndex: index(),
+                                        data: condition.data
+                                    }
+                                })
+                        }}
+                    />
+                }</For>
                 <NewItemButton
                     class="bg-green-600 dark:bg-green-300"
                     text="Add condition"
                     onClick={() => navigate("/pick/conditions")}
                 />
-                <For each={state.conditions}>{condition =>
-                    <BlockCard description={condition.description()} metadata={condition.metadata}/>
-                }</For>
             </div>
             <p class="mx-12 text font-bold text-xl">
                 then...
             </p>
             <div class={"flex flex-col m-4"}>
+                <For each={state.actions}>{(action, index) =>
+                    <BlockCard
+                        description={action.description()}
+                        class={"hover:scale-[1.02] transition cursor-pointer"}
+                        metadata={action.metadata}
+                        onClick={() => {
+                            if (action.metadata.form)
+                                navigate(`/pick/actions/${action.metadata.id}`, {
+                                    state: {
+                                        replaceIndex: index(),
+                                        data: action.data
+                                    }
+                                })
+                        }}
+                    />
+                }</For>
                 <NewItemButton
                     class="bg-blue-600 dark:bg-blue-300"
                     text="Add action"
                     onClick={() => navigate("/pick/actions")}
                 />
-                <For each={state.actions}>{action =>
-                    <BlockCard metadata={action.metadata}/>
-                }</For>
             </div>
             <button
-                class={"bg-blue-600 w-32 h-10 rounded m-12 text enabled:hover:scale-105 disabled:opacity-40 transition"}
+                class={"bg-blue-600 w-32 h-10 rounded m-12 text-stone-200 enabled:hover:scale-105 disabled:opacity-40 transition"}
                 disabled={state.conditions.length == 0 || state.actions.length == 0 || state.name.length == 0}
                 onClick={() => setState({name: "", conditions: [], actions: []})}
             >

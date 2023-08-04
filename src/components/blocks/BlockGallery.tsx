@@ -3,6 +3,7 @@ import BlockCard from "~/components/blocks/BlockCard";
 import {useNavigate} from "@solidjs/router";
 import BlockFactory from "~/api/block/BlockFactory";
 import {AnyBlock} from "~/api/block/Block";
+import BackButton from "~/components/BackButton";
 
 export function BlockGallery(props: {
     factory: BlockFactory,
@@ -12,8 +13,10 @@ export function BlockGallery(props: {
 }) {
     const navigate = useNavigate()
     const metas = props.factory.getRegisteredBlockMetas();
+
     return (
         <main>
+            <BackButton/>
             <h1 class={"text text-5xl mx-12 mt-12 font-bold"}>
                 {props.title}
             </h1>
