@@ -1,23 +1,11 @@
-import {AnyCondition} from "~/api/condition/Condition";
-import {AnyAction} from "~/api/action/Action";
 import Routine from "~/api/routine/Routine";
-import {BatteryCondition} from "~/api/condition/BatteryCondition";
-import BeepAction from "~/api/action/BeepAction";
+import {createStore} from "solid-js/store";
+import {createEffect} from "solid-js";
 
-export const Conditions: AnyCondition[] = [
-    new BatteryCondition({
-        battery: 30
-    }),
-];
+export const [routines, setRoutines] = createStore<Routine[]>([]);
 
-export const Actions: AnyAction[] = [
-    new BeepAction()
-]
+export function createEmptyRoutine(): Routine {
+    return {actions: [], conditions: [], name: ""}
+}
 
-export const Routines: Routine[] = [
-    {
-        name: "Sample",
-        actions: Actions,
-        conditions: Conditions
-    }
-]
+createEffect(() => localStorage.setItem("routines", JSON.stringify(routines)))
