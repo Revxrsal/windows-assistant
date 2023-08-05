@@ -5,13 +5,13 @@ import {createEmptyRoutine, setStorage} from "~/sample/Routines";
 import RoutineForm from "~/components/routine/EditRoutineForm";
 import {onMount} from "solid-js";
 
-export const [formRoutine, setFormRoutine] = createStore<Routine>(
+export const [routineInForm, setRoutineInForm] = createStore<Routine>(
     createEmptyRoutine()
 )
 
 export default function NewRoutine() {
     onMount(() => {
-        setFormRoutine(produce((v) => {
+        setRoutineInForm(produce((v) => {
             v.name = ""
             v.actions = []
             v.conditions = []

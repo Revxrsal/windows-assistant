@@ -3,7 +3,7 @@ import {For} from "solid-js";
 import BlockCard from "~/components/blocks/BlockCard";
 import NewItemButton from "~/components/NewItemButton";
 import Routine from "~/api/routine/Routine";
-import {formRoutine, setFormRoutine} from "~/routes/routines/new";
+import {routineInForm, setRoutineInForm} from "~/routes/routines/new";
 import {createEmptyRoutine} from "~/sample/Routines";
 
 export default function RoutineForm(props: {
@@ -21,14 +21,14 @@ export default function RoutineForm(props: {
                        class="border-none outline-none
                        text-blue-800 dark:text-blue-400
                        bg-stone-100 dark:bg-stone-800"
-                       value={formRoutine.name}
-                       onInput={e => setFormRoutine(() => ({name: e.target.value}))}/>
+                       value={routineInForm.name}
+                       onInput={e => setRoutineInForm(() => ({name: e.target.value}))}/>
             </div>
             <p class="mx-12 text font-bold text-xl">
                 When all the below conditions are met
             </p>
             <div class={"flex flex-col m-4"}>
-                <For each={formRoutine.conditions}>{(condition, index) =>
+                <For each={routineInForm.conditions}>{(condition, index) =>
                     <BlockCard
                         description={condition.description?.()}
                         class={`hover:scale-[1.02] transition ${condition.metadata.form ? "cursor-pointer" : ""}`}
@@ -54,7 +54,7 @@ export default function RoutineForm(props: {
                 then...
             </p>
             <div class={"flex flex-col m-4"}>
-                <For each={formRoutine.actions}>{(action, index) =>
+                <For each={routineInForm.actions}>{(action, index) =>
                     <BlockCard
                         description={action.description()}
                         class={`hover:scale-[1.02] transition ${action.metadata.form ? "cursor-pointer" : ""}`}
@@ -78,11 +78,11 @@ export default function RoutineForm(props: {
             </div>
             <button
                 class={"bg-blue-600 w-32 h-10 rounded m-12 text-stone-200 enabled:hover:scale-105 disabled:opacity-40 transition"}
-                disabled={formRoutine.conditions.length == 0 || formRoutine.actions.length == 0 || formRoutine.name.length == 0}
+                disabled={routineInForm.conditions.length == 0 || routineInForm.actions.length == 0 || routineInForm.name.length == 0}
                 onClick={() => {
-                    props.onFinish({...formRoutine})
+                    props.onFinish({...routineInForm})
                     // navigate("/routines")
-                    setFormRoutine(() => createEmptyRoutine())
+                    setRoutineInForm(() => createEmptyRoutine())
                 }}
             >
                 {props.replace ? "Update" : "Create"}
