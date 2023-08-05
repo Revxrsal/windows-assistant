@@ -1,5 +1,5 @@
 import {BlockGallery} from "~/components/blocks/BlockGallery";
-import {setRoutine} from "~/routes/routines/new";
+import {setFormRoutine} from "~/routes/routines/new";
 import {AnyAction} from "~/api/action/Action";
 import {actions} from "~/api/action/ActionRegistry";
 
@@ -7,7 +7,7 @@ export default function PickAction() {
     return (
         <BlockGallery
             add={action => {
-                setRoutine(`actions`, v => [...v, action as AnyAction])
+                setFormRoutine(`actions`, v => [...v, action as AnyAction])
             }}
             factory={actions}
             title="Pick an action"

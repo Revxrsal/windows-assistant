@@ -30,7 +30,7 @@ export function BlockGallery(props: {
                                 navigate(`/pick/${props.type}/${metadata.id}`)
                             else {
                                 props.add(metadata.createWithNoParams!())
-                                navigate("/routines/new")
+                                history.back()
                             }
                         }}
                     />

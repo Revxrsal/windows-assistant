@@ -42,13 +42,14 @@ export default class BlockFactory {
      * Creates a block from the given data. This should mostly be
      * data returned from JSON.parse()
      *
+     * @param id The ID of the block
      * @param data The data
      */
-    dataToBlock<T>(data: any): T {
-        const factory = this.idToFactory[data.id]
+    dataToBlock<T>(id: string, data: any): T {
+        const factory = this.idToFactory[id]
         if (factory != undefined)
             return factory(data) as T
-        throw new Error(`Cannot find any ${this.dataType} with id '${data.id}'`)
+        throw new Error(`Cannot find any ${this.dataType} with id '${id}'`)
     }
 
     /**
