@@ -13,7 +13,7 @@ function createPreferences(): Preferences {
 }
 
 function parsePreferences(): Preferences {
-    const json = localStorage.getItem("preferences")
+    const json = localStorage?.getItem("preferences")
     if (json == null)
         return createPreferences()
     return JSON.parse(json)
