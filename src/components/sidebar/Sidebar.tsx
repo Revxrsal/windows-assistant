@@ -9,7 +9,7 @@ import {ComponentProps, For} from "solid-js";
 import Folders from "~/sample/Folders";
 import {AiFillHome} from "solid-icons/ai";
 import ExpandableSidebarItem from "~/components/sidebar/ExpandableSidebarItem";
-import {Routines} from "~/sample/Routines";
+import {routines} from "~/sample/Routines";
 
 interface NewButtonProps extends ComponentProps<"div"> {
     isActive: boolean,
@@ -56,7 +56,7 @@ export default function Sidebar() {
                         onClick={() => navigate("/routines/new")}
                         label="New routine"
                     />
-                    <For each={Routines}>{routine =>
+                    <For each={routines}>{routine =>
                         <div class={"mini-sidebar-item"} onClick={() => navigate(`/routines/${routine.name}`)}>
                             {routine.name}
                         </div>

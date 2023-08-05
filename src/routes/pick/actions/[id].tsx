@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {useLocation, useNavigate, useParams} from "@solidjs/router";
 import {BlockFormProps} from "~/api/block/BlockMetadata";
-import {setState} from "~/routes/routines/new";
+import {setRoutine} from "~/routes/routines/new";
 import {actions} from "~/api/action/ActionRegistry";
 import {AnyAction} from "~/api/action/Action";
 
@@ -20,9 +20,9 @@ export default function ConfigureAction() {
         replace: navState?.replaceIndex != undefined,
         submit: (block) => {
             if (navState?.replaceIndex != undefined)
-                setState("actions", navState.replaceIndex, "data", block.data);
+                setRoutine("actions", navState.replaceIndex, "data", block.data);
             else
-                setState("actions", v => [...v, block as AnyAction]);
+                setRoutine("actions", v => [...v, block as AnyAction]);
             navigate("/routines/new")
         },
         data: navState?.data
