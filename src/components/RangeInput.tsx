@@ -10,9 +10,7 @@ export interface NumberInputProps {
 }
 
 export function RangeInput(props: NumberInputProps) {
-    const addClass = props.class ? props.class : ""
-
-    return <div class={`h-10 w-32 ${addClass}`}>
+    return <div class={`h-10 w-32 ${props.class || ""}`}>
         <label for="custom-input-number" class="w-full text text-sm font-semibold">
             {props.label}
         </label>
