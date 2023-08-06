@@ -11,11 +11,25 @@ import {AnyCondition} from "~/api/condition/Condition";
 import Modal from "~/components/modal/Modal";
 import {AnyBlock} from "~/api/block/Block";
 import {useNavigate} from "@solidjs/router";
+import {BsTrash} from "solid-icons/bs";
 
 interface ConfigureBlock {
     type: "actions" | "conditions"
     block: AnyBlock
     index: number
+}
+
+function DeleteButton(props: { onClick: () => void }) {
+    return <button
+        class="p-3 z-10 text-red-500 m-3 rounded hover:bg-red-500 hover:text-stone-200 transition"
+        onClick={e => {
+            e.stopPropagation()
+            props.onClick()
+        }}
+    >
+        <BsTrash size={24}/>
+    </button>
+
 }
 
 export default function RoutineForm(props: {
@@ -61,6 +75,10 @@ export default function RoutineForm(props: {
                                 setShowConfig(true)
                             }
                         }}
+                        icon={<DeleteButton onClick={() => props.setRoutine(
+                            "conditions",
+                            v => v.filter(x => x !== condition)
+                        )}/>}
                     />
                 }</For>
                 <NewItemButton
@@ -88,6 +106,10 @@ export default function RoutineForm(props: {
                                 setShowConfig(true)
                             }
                         }}
+                        icon={<DeleteButton onClick={() => props.setRoutine(
+                            "actions",
+                            v => v.filter(x => x !== action)
+                        )}/>}
                     />
                 }</For>
                 <NewItemButton
