@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {JSX} from "solid-js";
-import BackButton from "~/components/BackButton";
 import {BlockFormProps} from "~/api/block/BlockMetadata";
 
 export interface FormProps {
@@ -13,8 +12,7 @@ export interface FormProps {
 
 export default function BlockForm(props: FormProps) {
     return <>
-        <BackButton/>
-        <div class={"m-12 flex flex-col"}>
+        <div class={"flex flex-col px-8"}>
             <p class="text font-bold text-4xl">
                 {props.title}
             </p>

@@ -57,8 +57,8 @@ export default function Sidebar() {
                         label="New routine"
                     />
                     <For each={storage.routines}>{routine =>
-                        <div class={"mini-sidebar-item"} onClick={() => navigate(`/routines/${routine.name}`)}>
-                            {routine.name}
+                        <div class={"mini-sidebar-item"} onClick={() => navigate(`/routines/${routine.id}`)}>
+                            {routine.name || <p class={"opacity-40"}>(Unnamed routine)</p>}
                         </div>
                     }</For>
                 </SidebarItem>

@@ -1,23 +1,13 @@
 /* eslint-disable no-unused-vars */
-import {createStore, produce, reconcile} from "solid-js/store";
-import Routine from "~/api/routine/Routine";
+import {createStore} from "solid-js/store";
 import {createEmptyRoutine, setStorage} from "~/sample/Routines";
 import RoutineForm from "~/components/routine/EditRoutineForm";
-import {onMount} from "solid-js";
-
-export const [routineInForm, setRoutineInForm] = createStore<Routine>(
-    createEmptyRoutine()
-)
 
 export default function NewRoutine() {
-    onMount(() => {
-        setRoutineInForm(produce((v) => {
-            v.name = ""
-            v.actions = []
-            v.conditions = []
-        }))
-    })
+    const [routine, setRoutine] = createStore(createEmptyRoutine())
     return <RoutineForm
+        routine={routine}
+        setRoutine={setRoutine}
         replace={false}
         onFinish={routine => setStorage("routines", v => [...v, routine])}
     />
