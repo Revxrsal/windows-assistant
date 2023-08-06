@@ -39,6 +39,6 @@ export function loadStoredRoutines(): Routine[] {
 createEffect(() => localStorage.setItem("routines", JSON.stringify([...storage.routines])))
 
 export function createEmptyRoutine(): Routine {
-    return {id: generateRandomId(), actions: [], conditions: [], name: ""}
+    return {id: generateRandomId().toString(), actions: [], conditions: [], name: ""}
 }
 
