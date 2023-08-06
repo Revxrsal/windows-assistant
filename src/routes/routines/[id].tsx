@@ -11,9 +11,9 @@ export default function EditRoutine() {
     const [routine, setRoutineSignal] = createSignal<Store<Routine>>()
     const [setRoutine, setSetRoutine] = createSignal<SetStoreFunction<Routine>>()
     createRenderEffect(() => {
-        const store = createStore(storage.routines[routineIndex()])
-        setRoutineSignal(store[0])
-        setSetRoutine(() => store[1])
+        const [store, setStore] = createStore(storage.routines[routineIndex()])
+        setRoutineSignal(store)
+        setSetRoutine(() => setStore)
     })
     return <RoutineForm
         routine={routine()!}
