@@ -12,8 +12,8 @@ export interface FormProps {
 
 export default function BlockForm(props: FormProps) {
     return <>
-        <div class={"flex flex-col px-8"}>
-            <p class="text font-bold text-4xl">
+        <div class={"flex flex-col items-center"}>
+            <p class="text font-bold text-5xl">
                 {props.title}
             </p>
             <div>
