@@ -1,5 +1,5 @@
 import BlockFactory from "~/api/block/BlockFactory";
-import {BatteryCondition} from "~/api/condition/BatteryCondition";
+import {BatteryCondition} from "~/api/condition/battery/BatteryCondition";
 
 export const conditions = new BlockFactory("condition")
 
