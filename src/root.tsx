@@ -5,7 +5,7 @@ import "./root.css";
 import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
-import ApplicationScheduler from "~/ApplicationScheduler";
+import ApplicationScheduler from "~/scheduler/ApplicationScheduler";
 import {storage} from "~/sample/Routines";
 
 onMount(async () => {
