@@ -56,6 +56,7 @@ const METADATA: BlockMetadata = {
 export class BatteryCondition implements Condition<BatteryConditionData> {
 
     metadata = METADATA;
+    triggersOnce = true;
     data: BatteryConditionData;
 
     description = () => `When battery reaches ${this.data.battery}%`
@@ -71,5 +72,6 @@ export class BatteryCondition implements Condition<BatteryConditionData> {
     static register(factory: BlockFactory) {
         factory.register(ID, METADATA, (data) => new BatteryCondition(data))
     }
+
 
 }
