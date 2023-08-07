@@ -12,7 +12,7 @@ export default function TitleBar() {
         <div class="titlebar-button" onClick={() => appWindow.toggleMaximize()}>
             <TbRectangle/>
         </div>
-        <div class="titlebar-button hover:bg-red-500" onClick={() => appWindow.close()}>
+        <div class="titlebar-button hover:bg-red-500 dark:hover:bg-red-500" onClick={() => appWindow.close()}>
             <FaSolidXmark/>
         </div>
     </div>
