@@ -21,7 +21,8 @@ export default class BeepAction implements BasicAction {
     description = () => "Play a beep sound";
 
     async execute(): Promise<void> {
-        return invoke("beep")
+        console.log("*Beep*")
+        // return invoke("beep")
     }
 
     static register(factory: BlockFactory) {
