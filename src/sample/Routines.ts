@@ -17,7 +17,7 @@ export const [storage, setStorage] = createStore<Storage>({
 })
 
 export function loadStoredRoutines(): Routine[] {
-    const stored = localStorage?.getItem("routines")
+    const stored = localStorage?.getItem("assistant.routines")
     if (stored == null)
         return []
     const routines: Routine[] = JSON.parse(stored)
@@ -36,7 +36,7 @@ export function loadStoredRoutines(): Routine[] {
     return routines
 }
 
-createEffect(() => localStorage.setItem("routines", JSON.stringify([...storage.routines])))
+createEffect(() => localStorage.setItem("assistant.routines", JSON.stringify([...storage.routines])))
 
 export function createEmptyRoutine(): Routine {
     return {id: generateRandomId().toString(), actions: [], conditions: [], name: ""}

@@ -13,7 +13,7 @@ function createPreferences(): Preferences {
 }
 
 function parsePreferences(): Preferences {
-    const json = localStorage?.getItem("preferences")
+    const json = localStorage?.getItem("assistant.preferences")
     if (json == null)
         return createPreferences()
     return JSON.parse(json)
@@ -23,4 +23,4 @@ export const [preferences, setPreferences] = createStore<Preferences>(
     parsePreferences()
 )
 
-createEffect(() => localStorage.setItem("preferences", JSON.stringify(preferences)))
+createEffect(() => localStorage.setItem("assistant.preferences", JSON.stringify(preferences)))
