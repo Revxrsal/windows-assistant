@@ -37,6 +37,7 @@ export default function RoutineForm(props: {
     routine: Routine,
     setRoutine: SetStoreFunction<Routine>
     onFinish: (routine: Routine) => void,
+    onDelete?: () => void
 }) {
     const navigate = useNavigate();
     const [showActions, setShowActions] = createSignal(false);
@@ -45,9 +46,22 @@ export default function RoutineForm(props: {
     const [showConfig, setShowConfig] = createSignal(false)
     return (
         <main>
-            <p class="mx-12 my-7 text font-bold text-2xl">
-                {props.replace ? "Update routine" : "New routine"}
-            </p>
+            <div class={"flex items-center"}>
+                <p class="ml-12 my-7 text font-bold text-2xl">
+                    {props.replace ? "Update routine" : "New routine"}
+                </p>
+                <Show when={props.replace}>
+                    <button
+                        class="p-3 z-10 ml-5 text-red-500 rounded hover:bg-red-500 hover:text-stone-200 transition"
+                        onClick={e => {
+                            e.stopPropagation()
+                            props.onDelete?.()
+                        }}
+                    >
+                        <BsTrash size={24}/>
+                    </button>
+                </Show>
+            </div>
             <div class={"justify-center flex flex-col title m-12 mt-0"}>
                 <input type="text" placeholder="Routine name..."
                        class="border-none outline-none
