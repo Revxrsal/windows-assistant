@@ -1,11 +1,8 @@
 import Condition from "~/api/condition/Condition";
 import {BsBatteryHalf} from "solid-icons/bs";
-import BlockMetadata, {BlockFormProps} from "~/api/block/BlockMetadata";
+import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
-import {createSignal} from "solid-js";
-import BlockForm from "~/api/condition/BlockForm";
-import {RangeInput} from "~/components/RangeInput";
-import {BatteryForm} from "~/api/condition/battery/BatteryForm";
+import BatteryForm from "~/api/condition/battery/BatteryForm";
 
 const ID = "battery"
 

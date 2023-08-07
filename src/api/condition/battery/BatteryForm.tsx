@@ -4,7 +4,7 @@ import BlockForm from "~/api/condition/BlockForm";
 import {RangeInput} from "~/components/RangeInput";
 import {BatteryCondition, BatteryConditionData} from "~/api/condition/battery/BatteryCondition";
 
-export function BatteryForm(props: BlockFormProps<BatteryConditionData>) {
+export default function BatteryForm(props: BlockFormProps<BatteryConditionData>) {
     const [value, setValue] = createSignal(
         props.data?.battery || 5
     );
