@@ -1,10 +1,17 @@
 // @refresh reload
-import {Suspense} from "solid-js";
+import {onMount, Suspense} from "solid-js";
 import {Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title,} from "solid-start";
 import "./root.css";
 import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
+import ApplicationScheduler from "~/ApplicationScheduler";
+import {storage} from "~/sample/Routines";
+
+onMount(async () => {
+    const scheduler = new ApplicationScheduler()
+    scheduler.poll(() => storage.routines)
+})
 
 export default function Root() {
     return (
