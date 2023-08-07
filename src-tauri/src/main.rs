@@ -3,6 +3,7 @@
 
 use std::error::Error;
 use std::time::Duration;
+use file::{open_file_dialog, run_file};
 use rodio::{Decoder, OutputStream, Sink};
 use rodio::source::{SineWave, Source};
 
@@ -11,7 +12,7 @@ mod file;
 fn main() {
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![beep, file::open_file_dialog])
+        .invoke_handler(tauri::generate_handler![beep, open_file_dialog, run_file])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

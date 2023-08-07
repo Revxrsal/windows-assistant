@@ -4,6 +4,7 @@ import BlockFactory from "~/api/block/BlockFactory";
 import {VsRunAll} from "solid-icons/vs";
 import RunProgramForm from "~/api/action/runProgram/RunProgramForm";
 import {getBaseFileName} from "~/api/utils/utils";
+import {invoke} from "@tauri-apps/api";
 
 const ID = "runProgram"
 
@@ -32,7 +33,7 @@ export default class RunProgramAction implements Action<RunProgramData> {
     }
 
     async execute(): Promise<void> {
-        // return invoke("beep")
+        return invoke("run_file", {...this.data})
     }
 
     static register(factory: BlockFactory) {
