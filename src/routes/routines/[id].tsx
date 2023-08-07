@@ -26,8 +26,8 @@ export default function EditRoutine() {
                 <h1 class="text-3xl font-bold">Are you sure?</h1>
             }
         >
-            <p>Are you sure you want to delete this routine? This action cannot be undone!</p>
-            <div class={"my-5"}/>
+            <p>Are you sure you want to delete this routine? <strong>This action cannot be undone!</strong></p>
+            <div class={"pb-10"}/>
             <div class={"flex flex-row justify-around"}>
                 <button
                     class="bg-stone-300 dark:bg-stone-700 p-3 rounded text hover:scale-[1.03] transition"
