@@ -12,7 +12,7 @@
 
 main {
     /* For the sidebar */
-    @apply pl-[300px] flex h-full flex-col
+    @apply pl-[300px] flex h-full flex-col pt-8
 }
 
 body {
@@ -20,7 +20,7 @@ body {
 }
 
 .titlebar {
-    @apply fixed h-8 select-none flex justify-end top-0 left-0 right-0 z-[999] bg-stone-200 dark:bg-stone-800;
+    @apply fixed h-8 select-none flex justify-end top-0 left-0 right-0 z-[999] bg-stone-100 dark:bg-stone-800;
 }
 
 .titlebar-button {
