@@ -17,7 +17,7 @@ fn main() {
 }
 
 #[tauri::command]
-fn beep() {
+async fn beep() {
     let (stream, handle) = match OutputStream::try_default() {
         Ok(s) => (s.0, s.1),
         Err(err) => {
@@ -43,5 +43,5 @@ fn beep() {
     sink.append(src);
 
     // Blocks the thread until all queued sounds have been cleared.
-    // sink.sleep_until_end();
+    sink.sleep_until_end();
 }
