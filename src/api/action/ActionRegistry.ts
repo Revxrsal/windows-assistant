@@ -2,9 +2,11 @@
 
 import BlockFactory from "~/api/block/BlockFactory";
 import BeepAction from "~/api/action/beep/BeepAction";
+import RunProgramAction from "~/api/action/runProgram/RunProgramAction";
 
 export const actions = new BlockFactory("action")
 
 export function registerActions() {
     BeepAction.register(actions)
+    RunProgramAction.register(actions)
 }

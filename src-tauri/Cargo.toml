@@ -17,10 +17,11 @@ tauri-build = { version = "1.4.0", features = [] }
 [dependencies]
 serde_json = "1.0"
 serde = { version = "1.0", features = ["derive"] }
+opener = "0.6.1"
 
 [dependencies.tauri]
 version = "1.4.0"
-features = [
+features = [ "dialog-open",
     "window-maximize",
     "window-hide",
     "window-unmaximize",
@@ -28,7 +29,8 @@ features = [
     "window-start-dragging",
     "window-close",
     "window-unminimize",
-    "window-show"
+    "window-show",
+    "dialog"
 ]
 
 [features]
