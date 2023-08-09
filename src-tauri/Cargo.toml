@@ -22,7 +22,8 @@ rodio = "0.17.1"
 
 [dependencies.tauri]
 version = "1.4.0"
-features = [ "dialog-open",
+features = [
+    "dialog-open",
     "window-maximize",
     "window-hide",
     "window-unmaximize",

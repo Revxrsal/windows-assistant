@@ -8,7 +8,7 @@ export default function Home() {
             <h1 class="text-6xl m-12 font-bold text">Windows Assistant</h1>
             <h2 class="text-4xl m-12 font-bold text">Getting started</h2>
             <button
-                class="mx-12 bg-blue-500 w-32 h-10 rounded hover:scale-105 transition"
+                class="mx-12 bg-blue-600 w-32 text-stone-200 h-10 rounded hover:scale-105 transition"
                 onClick={() => setShow(true)}
             >
                 Open modal

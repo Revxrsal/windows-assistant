@@ -3,13 +3,18 @@
 
 use std::error::Error;
 
-mod file;
-mod audio;
+use action::file::{open_file_dialog, run_file};
+use action::beep::beep;
+
+mod action;
 
 fn main() {
-
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![audio::beep, file::open_file_dialog])
+        .invoke_handler(tauri::generate_handler![
+            beep,
+            open_file_dialog,
+            run_file
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
