@@ -32,6 +32,7 @@ function DeleteButton(props: { onClick: () => void }) {
 
 }
 
+// Note: Would it be better if we pass the store around instead?
 export default function RoutineForm(props: {
     replace: boolean,
     routine: Routine,
