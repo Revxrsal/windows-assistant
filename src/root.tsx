@@ -5,15 +5,20 @@ import "./root.css";
 import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
-import ApplicationScheduler from "~/scheduler/ApplicationScheduler";
+import {addPollFunction} from "~/scheduler/ApplicationScheduler";
 import {storage} from "~/sample/Routines";
+import {invoke} from "@tauri-apps/api";
 
-onMount(async () => {
-    const scheduler = new ApplicationScheduler()
-    scheduler.poll(() => storage.routines)
-})
+function disableContextMenu() {
+    document.addEventListener("contextmenu", event => event.preventDefault());
+}
 
 export default function Root() {
+    onMount(async () => {
+        addPollFunction(() => storage.routines)
+        disableContextMenu()
+        await invoke("setup_scheduler")
+    })
     return (
         <Html lang="en" classList={{
             dark: preferences.darkTheme
