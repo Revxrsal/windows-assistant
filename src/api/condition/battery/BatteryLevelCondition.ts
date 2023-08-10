@@ -34,8 +34,7 @@ export class BatteryLevelCondition implements Condition<BatteryConditionData> {
 
     async eval(): Promise<boolean> {
         const battery = (await invoke("get_battery") as number) * 100
-        console.log("Battery: ", battery, "%")
-        return battery <= this.data.battery
+         return battery <= this.data.battery
     }
 
     static register(factory: BlockFactory) {
