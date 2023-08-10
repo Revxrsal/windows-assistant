@@ -2,7 +2,7 @@ import {BlockFormProps} from "~/api/block/BlockMetadata";
 import RunProgramAction, {RunProgramData} from "~/api/action/run-program/RunProgramAction";
 import BlockForm from "~/api/condition/BlockForm";
 import {createMemo, createSignal, onCleanup} from "solid-js";
-import {listen, UnlistenFn} from "@tauri-apps/api/event";
+import {listen, TauriEvent, UnlistenFn} from "@tauri-apps/api/event";
 import {invoke} from "@tauri-apps/api";
 import {getBaseFileName} from "~/api/utils/utils";
 
@@ -20,7 +20,7 @@ export default function RunProgramForm(props: BlockFormProps<RunProgramData>) {
 
     const [removeListener, setRemoveListener] = createSignal<UnlistenFn>()
 
-    listen('tauri://file-drop', event => {
+    listen(TauriEvent.WINDOW_FILE_DROP, event => {
         const path = (event.payload as string[])[0]
         setPath(path)
     }).then(v => setRemoveListener(() => v))
