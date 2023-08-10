@@ -6,4 +6,5 @@ export const conditions = new BlockFactory("condition")
 
 export function registerConditions() {
     BatteryLevelCondition.register(conditions)
+    IsChargingCondition.register(conditions)
 }
