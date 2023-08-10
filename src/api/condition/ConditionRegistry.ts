@@ -1,8 +1,9 @@
 import BlockFactory from "~/api/block/BlockFactory";
-import {BatteryCondition} from "~/api/condition/battery/BatteryCondition";
+import {BatteryLevelCondition} from "~/api/condition/battery/BatteryLevelCondition";
+import {IsChargingCondition} from "~/api/condition/battery/IsChargingCondition";
 
 export const conditions = new BlockFactory("condition")
 
 export function registerConditions() {
-    BatteryCondition.register(conditions)
+    BatteryLevelCondition.register(conditions)
 }

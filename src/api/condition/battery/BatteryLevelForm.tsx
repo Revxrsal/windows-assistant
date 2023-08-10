@@ -2,15 +2,15 @@ import {BlockFormProps} from "~/api/block/BlockMetadata";
 import {createSignal} from "solid-js";
 import BlockForm from "~/api/condition/BlockForm";
 import {RangeInput} from "~/components/RangeInput";
-import {BatteryCondition, BatteryConditionData} from "~/api/condition/battery/BatteryCondition";
+import {BatteryLevelCondition, BatteryConditionData} from "~/api/condition/battery/BatteryLevelCondition";
 
-export default function BatteryForm(props: BlockFormProps<BatteryConditionData>) {
+export default function BatteryLevelForm(props: BlockFormProps<BatteryConditionData>) {
     const [value, setValue] = createSignal(
         props.data?.battery || 5
     );
 
     function submit() {
-        props.submit(new BatteryCondition({
+        props.submit(new BatteryLevelCondition({
             battery: value()
         }))
     }

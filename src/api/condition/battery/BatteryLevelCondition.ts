@@ -2,10 +2,10 @@ import Condition from "~/api/condition/Condition";
 import {BsBatteryHalf} from "solid-icons/bs";
 import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
-import BatteryForm from "~/api/condition/battery/BatteryForm";
-import {invoke, tauri} from "@tauri-apps/api";
+import BatteryLevelForm from "~/api/condition/battery/BatteryLevelForm";
+import {invoke} from "@tauri-apps/api";
 
-const ID = "battery"
+const ID = "battery-level"
 
 export interface BatteryConditionData {
     battery: number
@@ -17,10 +17,10 @@ const METADATA: BlockMetadata = {
     description: "Triggered when the battery reaches a certain level",
     backgroundClass: "bg-yellow-500 dark:bg-yellow-300",
     icon: (props) => BsBatteryHalf(props),
-    form: (props) => BatteryForm(props)
+    form: (props) => BatteryLevelForm(props)
 }
 
-export class BatteryCondition implements Condition<BatteryConditionData> {
+export class BatteryLevelCondition implements Condition<BatteryConditionData> {
 
     metadata = METADATA;
     triggersOnce = true;
@@ -39,6 +39,6 @@ export class BatteryCondition implements Condition<BatteryConditionData> {
     }
 
     static register(factory: BlockFactory) {
-        factory.register(ID, METADATA, (data) => new BatteryCondition(data))
+        factory.register(ID, METADATA, (data) => new BatteryLevelCondition(data))
     }
 }
