@@ -6,10 +6,11 @@ use std::error::Error;
 use action::{
     beep::beep,
     file::{open_file_dialog, run_file},
-    url::open_url
+    url::open_browser
 };
 
 mod action;
+mod util;
 
 fn main() {
     tauri::Builder::default()
@@ -18,7 +19,6 @@ fn main() {
             open_file_dialog,
             open_browser,
             run_file,
-            open_url
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

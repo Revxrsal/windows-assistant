@@ -1,6 +1,6 @@
 use std::path::PathBuf;
 
 #[tauri::command]
-pub fn open_url(url: &str) {
+pub async fn open_browser(url: String) {
     opener::open_browser(PathBuf::from(url)).unwrap();
 }
