@@ -3,6 +3,7 @@ import {BsBatteryHalf} from "solid-icons/bs";
 import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
 import BatteryForm from "~/api/condition/battery/BatteryForm";
+import {invoke, tauri} from "@tauri-apps/api";
 
 const ID = "battery"
 
@@ -32,7 +33,8 @@ export class BatteryCondition implements Condition<BatteryConditionData> {
     }
 
     async eval(): Promise<boolean> {
-        return true
+        const battery = (await invoke("get_battery") as number) * 100
+        return battery <= this.data.battery
     }
 
     static register(factory: BlockFactory) {

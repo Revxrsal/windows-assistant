@@ -4,11 +4,14 @@
 use action::{
     beep::beep,
     file::{open_file_dialog, run_file},
-    url::open_browser
+    url::open_browser,
 };
 
-mod action;
-mod util;
+use condition::battery::{get_battery};
+
+pub mod action;
+pub mod util;
+pub mod condition;
 
 fn main() {
     tauri::Builder::default()
@@ -17,6 +20,7 @@ fn main() {
             open_file_dialog,
             open_browser,
             run_file,
+            get_battery
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
