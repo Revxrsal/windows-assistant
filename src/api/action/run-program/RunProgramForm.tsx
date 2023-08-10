@@ -1,5 +1,5 @@
 import {BlockFormProps} from "~/api/block/BlockMetadata";
-import RunProgramAction, {RunProgramData} from "~/api/action/runProgram/RunProgramAction";
+import RunProgramAction, {RunProgramData} from "~/api/action/run-program/RunProgramAction";
 import BlockForm from "~/api/condition/BlockForm";
 import {createMemo, createSignal, onCleanup} from "solid-js";
 import {listen, UnlistenFn} from "@tauri-apps/api/event";

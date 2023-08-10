@@ -2,7 +2,7 @@ import Action from "~/api/action/Action";
 import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
 import {VsRunAll} from "solid-icons/vs";
-import RunProgramForm from "~/api/action/runProgram/RunProgramForm";
+import RunProgramForm from "~/api/action/run-program/RunProgramForm";
 import {getBaseFileName} from "~/api/utils/utils";
 import {invoke} from "@tauri-apps/api";
 
