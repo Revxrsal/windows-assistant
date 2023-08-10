@@ -18,7 +18,7 @@ export type AnyCondition = Condition<any>
  */
 export default interface Condition<T> extends Block<T> {
 
-     /**
+    /**
      * Whether should this condition trigger only once. For example, if
      * the condition is true at T=0, and remains true at T=1,
      * actions will not be re-triggered unless triggersOnce is
