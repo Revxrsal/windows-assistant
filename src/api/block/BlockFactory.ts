@@ -34,6 +34,9 @@ export default class BlockFactory {
      * @param factory The item's factory function from data
      */
     register(id: string, metadata: BlockMetadata, factory: (data: any) => any) {
+        if (metadata.createWithNoParams == undefined && metadata.form == undefined)
+            throw new Error(`${this.dataType} '${metadata.id}'s metadata does not define 'createWithNoParams' nor 'form'.
+             You must specify either.`)
         this.idToFactory[id] = factory
         this.idToMetadata[id] = metadata
     }
