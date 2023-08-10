@@ -3,8 +3,16 @@
 
 use std::error::Error;
 
+<<<<<<< Updated upstream
 use action::file::{open_file_dialog, open_browser, run_file};
 use action::beep::beep;
+=======
+use action::{
+    beep::beep,
+    file::{open_file_dialog, run_file},
+    url::open_url
+};
+>>>>>>> Stashed changes
 
 mod action;
 

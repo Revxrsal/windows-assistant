@@ -16,6 +16,6 @@ pub async fn open_browser(path: &str) -> Result<(), OpenError> {
 }
 
 #[tauri::command]
-pub fn run_file(path: &str) {
+pub async fn run_file(path: String) {
     opener::open(path).unwrap();
 }
