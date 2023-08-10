@@ -33,7 +33,10 @@ export default class RunProgramAction implements Action<RunProgramData> {
     }
 
     async execute(): Promise<void> {
-        return invoke("run_file", {...this.data})
+        return invoke("run_file", {
+            path: this.data.path,
+            args: this.data.args || null
+        })
     }
 
     static register(factory: BlockFactory) {

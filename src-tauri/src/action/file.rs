@@ -1,6 +1,8 @@
 use std::path::PathBuf;
-use opener::OpenError;
+
 use tauri::api::dialog::blocking::FileDialogBuilder;
+
+use crate::util::open_file;
 
 #[tauri::command]
 pub async fn open_file_dialog() -> String {
@@ -11,6 +13,7 @@ pub async fn open_file_dialog() -> String {
 }
 
 #[tauri::command]
-pub async fn run_file(path: String) {
-    opener::open(path).unwrap();
+pub async fn run_file(path: String, args: Option<String>) {
+    println!("args: {:?}", args);
+    open_file::open(path, args.as_ref()).unwrap();
 }
