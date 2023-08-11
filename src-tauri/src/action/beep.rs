@@ -30,5 +30,5 @@ pub async fn beep() {
     sink.append(src);
 
     // Blocks the thread until all queued sounds have been cleared.
-    sink.sleep_until_end();
+    // sink.sleep_until_end();
 }
