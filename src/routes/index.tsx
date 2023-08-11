@@ -1,12 +1,14 @@
 import {createSignal} from "solid-js";
 import Modal from "~/components/modal/Modal";
+import Title from "~/components/text/Title";
+import Subtitle from "~/components/text/Subtitle";
 
 export default function Home() {
     const [show, setShow] = createSignal(false);
     return (
         <main>
-            <h1 class="text-6xl m-12 font-bold text">Windows Assistant</h1>
-            <h2 class="text-4xl m-12 font-bold text">Getting started</h2>
+            <Title>Windows Assistant</Title>
+            <Subtitle>Getting started</Subtitle>
             <button
                 class="mx-12 bg-blue-600 w-32 text-stone-200 h-10 rounded hover:scale-105 transition"
                 onClick={() => setShow(true)}
