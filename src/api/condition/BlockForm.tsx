@@ -8,11 +8,12 @@ export interface FormProps {
     disabled?: boolean
     children?: JSX.Element,
     configProps: BlockFormProps<any>
+    class?: string
 }
 
 export default function BlockForm(props: FormProps) {
     return <>
-        <div class={"flex flex-col items-center content-center justify-center"}>
+        <div class={`flex flex-col items-center content-center justify-center ${props.class || ""}`}>
             <p class="text font-bold text-5xl pb-12">
                 {props.title}
             </p>
