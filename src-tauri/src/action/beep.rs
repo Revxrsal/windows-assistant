@@ -5,7 +5,7 @@ use rodio::source::SineWave;
 
 #[tauri::command]
 pub async fn beep() {
-    let (stream, handle) = match OutputStream::try_default() {
+    let (_stream, handle) = match OutputStream::try_default() {
         Ok(s) => (s.0, s.1),
         Err(err) => {
             eprintln!("Failed to fetch default output device: ");
