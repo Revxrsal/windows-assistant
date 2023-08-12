@@ -1,15 +1,13 @@
 import SidebarItem from "~/components/sidebar/SidebarItem";
-import {BsDatabase, BsFolder, BsPinMapFill, BsPlus} from "solid-icons/bs";
+import {BsDatabase, BsGithub, BsPinMapFill, BsPlus} from "solid-icons/bs";
 import SidebarTitle from "~/components/sidebar/SidebarTitle";
 import HorizontalDivider from "~/components/HorizontalDivider";
 import {useLocation, useNavigate} from "@solidjs/router";
-import SidebarSubtitle from "~/components/sidebar/SidebarSubtitle";
-import {FaSolidForwardFast, FaSolidGear} from "solid-icons/fa";
+import {FaSolidForwardFast, FaSolidGear, FaSolidQuestion} from "solid-icons/fa";
 import {ComponentProps, For} from "solid-js";
-import Folders from "~/sample/Folders";
 import {AiFillHome} from "solid-icons/ai";
-import ExpandableSidebarItem from "~/components/sidebar/ExpandableSidebarItem";
 import {storage} from "~/sample/Routines";
+import {openBrowser} from "~/api/utils/fns";
 
 interface NewButtonProps extends ComponentProps<"div"> {
     isActive: boolean,
@@ -25,8 +23,6 @@ function NewButton(props: NewButtonProps) {
         <span class={"pl-4"}>{props.label}</span>
     </div>
 }
-
-// TODO: Refactor each section to its own component, for brevity.
 
 export default function Sidebar() {
     const location = useLocation();
@@ -57,7 +53,8 @@ export default function Sidebar() {
                         label="New routine"
                     />
                     <For each={storage.routines}>{routine =>
-                        <div class={"mini-sidebar-item"} onClick={() => navigate(`/routines/${routine.id}`)}>
+                        <div class={`mini-sidebar-item ${!routine.enabled ? "opacity-75" : ""}`}
+                             onClick={() => navigate(`/routines/${routine.id}`)}>
                             {routine.name || <p class={"opacity-40"}>(Unnamed routine)</p>}
                         </div>
                     }</For>
@@ -74,20 +71,25 @@ export default function Sidebar() {
                     isActive={isPathOpen("/actions")}
                     onClick={() => navigate("/actions")}
                 />
+                <HorizontalDivider/>
                 <SidebarItem
                     label="Settings"
                     icon={<FaSolidGear size={24}/>}
                     isActive={isPathOpen("/settings")}
                     onClick={() => navigate("/settings")}
                 />
-
-                <SidebarSubtitle title="Folders"/>
-                <For each={Folders}>{folder =>
-                    <ExpandableSidebarItem
-                        label={folder.name}
-                        icon={<BsFolder size={24}/>}
-                    />
-                }</For>
+                <SidebarItem
+                    label="About"
+                    icon={<FaSolidQuestion size={24}/>}
+                    isActive={isPathOpen("/about")}
+                    onClick={() => navigate("/about")}
+                />
+                <SidebarItem
+                    label="Contribute"
+                    icon={<BsGithub size={24}/>}
+                    isActive={false}
+                    onClick={() => openBrowser("https://github.com/Revxrsal/windows-assistant")}
+                />
             </div>
         </>
     )
