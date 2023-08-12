@@ -48,8 +48,6 @@ export default function Modal(props: ModalProps) {
                     document.removeEventListener('keydown', focusTrap);
                     originalFocus?.focus();
                 });
-
-                firstFocusableElement?.focus();
             }
         }
     )
