@@ -43,6 +43,7 @@ features = [
     "windef",
     "winuser",
     "shellapi",
+    "processthreadsapi",
     "psapi",
     "handleapi"
 ]
