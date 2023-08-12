@@ -5,13 +5,16 @@ import {pickFile} from "~/api/utils/fns";
 
 export interface FileInputProps {
     path: Accessor<string>,
-    setPath: Setter<string>
+    setPath: Setter<string>,
+    label?: string,
+    filters?: [string, string[]][]
 }
 
 export default function FileInput(props: FileInputProps) {
     const fileName = createMemo(() => getBaseFileName(props.path()))
 
     let removeListener: UnlistenFn;
+
     listen(TauriEvent.WINDOW_FILE_DROP, event => {
         const path = (event.payload as string[])[0]
         props.setPath(path)
@@ -29,11 +32,11 @@ export default function FileInput(props: FileInputProps) {
             rounded-xl
             flex drop-shadow-md`}
                 onClick={async () => {
-                    const file = await pickFile()
+                    const file = await pickFile(props.filters || [])
                     props.setPath(file)
                 }}
     >
             <span
-                class={"text-xl text-center px-4"}>{fileName() || `Drop your program here, or click to choose one`}</span>
+                class={"text-xl text-center px-4"}>{fileName() || props.label || `Drop your program here, or click to choose one`}</span>
     </div>;
 }

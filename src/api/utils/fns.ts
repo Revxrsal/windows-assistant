@@ -11,8 +11,10 @@ export async function isProcessRunning(processPath: string): Promise<boolean> {
     })
 }
 
-export async function pickFile(): Promise<string> {
-    return invoke("pick_file")
+ export async function pickFile(filters: [string, string[]][]): Promise<string> {
+    return invoke("pick_file", {
+        filters: filters
+    })
 }
 
 export async function getBattery(): Promise<number> {
