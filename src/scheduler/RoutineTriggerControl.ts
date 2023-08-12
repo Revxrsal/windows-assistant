@@ -15,7 +15,7 @@ export async function shouldExecute(
     clearTriggeredConditions: () => void
 ) {
     let allConditionsAreMet = true
-    if (routine.conditions.length == 0)
+    if (!routine.enabled || routine.conditions.length == 0)
         return false
     for (const condition of routine.conditions) {
         const isMet = await condition.eval()

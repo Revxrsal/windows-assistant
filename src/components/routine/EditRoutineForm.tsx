@@ -12,6 +12,7 @@ import Modal from "~/components/modal/Modal";
 import {AnyBlock} from "~/api/block/Block";
 import {useNavigate} from "@solidjs/router";
 import {BsTrash} from "solid-icons/bs";
+import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
 
 interface ConfigureBlock {
     type: "actions" | "conditions"
@@ -52,6 +53,16 @@ export default function RoutineForm(props: {
                     {props.replace ? "Update routine" : "New routine"}
                 </p>
                 <Show when={props.replace}>
+                    <button
+                        class="p-3 z-10 ml-5 fill-green-700 dark:fill-green-500 rounded
+                        hover:bg-green-700 hover:fill-stone-200 dark:hover:fill-stone-200 transition"
+                        onClick={e => {
+                            e.stopPropagation()
+                            props.setRoutine("enabled", v => !v)
+                        }}
+                    >
+                        {props.routine.enabled ? <FaSolidPause size={24}/> : <FaSolidPlay size={24}/>}
+                    </button>
                     <button
                         class="p-3 z-10 ml-5 text-red-500 rounded hover:bg-red-500 hover:text-stone-200 transition"
                         onClick={e => {
