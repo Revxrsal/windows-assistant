@@ -42,7 +42,9 @@ features = [
     "winbase",
     "windef",
     "winuser",
-    "shellapi"
+    "shellapi",
+    "psapi",
+    "handleapi"
 ]
 
 [dependencies.tokio]

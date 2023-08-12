@@ -1,7 +1,6 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-
 use action::{
     beep::beep,
     file::{open_file_dialog, run_file},
@@ -9,7 +8,8 @@ use action::{
 };
 use condition::{
     battery::{get_battery, is_charging},
-    keyboard::{is_combination_pressed}
+    keyboard::is_combination_pressed,
+    process::is_process_running,
 };
 use scheduler::setup_scheduler;
 
@@ -29,6 +29,7 @@ fn main() {
             get_battery,
             is_charging,
             is_combination_pressed,
+            is_process_running,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

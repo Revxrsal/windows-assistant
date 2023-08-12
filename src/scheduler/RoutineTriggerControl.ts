@@ -34,7 +34,7 @@ export async function shouldExecute(
                 allConditionsAreMet = false
                 continue
             }
-            triggeredConditions[routine.id] = true
+            triggeredConditions[condition.metadata.id.toString()] = true
         }
     }
     return allConditionsAreMet

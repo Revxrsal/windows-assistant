@@ -1,4 +1,4 @@
-import {ComponentProps, JSX, splitProps} from "solid-js";
+import {ComponentProps, splitProps} from "solid-js";
 
 /**
  * Since PostCSS will delete unused classes, it may delete
