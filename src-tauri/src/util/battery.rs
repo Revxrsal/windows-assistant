@@ -7,7 +7,6 @@ use winapi::um::winbase::{GetSystemPowerStatus, SYSTEM_POWER_STATUS};
 
 const CHARGING: BYTE = 8;
 const NO_SYSTEM_BATTERY: BYTE = 128;
-const UNKNOWN_STATUS: BYTE = 255;
 
 pub fn get_battery() -> Option<f32> {
     let mut power_status = SYSTEM_POWER_STATUS {
