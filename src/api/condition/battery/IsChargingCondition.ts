@@ -2,7 +2,7 @@ import {BasicCondition} from "~/api/condition/Condition";
 import {BsBatteryCharging} from "solid-icons/bs";
 import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
-import {invoke} from "@tauri-apps/api";
+import {isDeviceCharging} from "~/api/utils/fns";
 
 const ID = "battery-is-charging"
 
@@ -23,7 +23,7 @@ export class IsChargingCondition implements BasicCondition {
     description = () => `Triggered when the charger is plugged in`
 
     async eval(): Promise<boolean> {
-        return invoke("is_charging")
+        return isDeviceCharging()
     }
 
     static register(factory: BlockFactory) {

@@ -1,7 +1,7 @@
-import {invoke} from "@tauri-apps/api";
 import {Accessor, createMemo, onCleanup, Setter} from "solid-js";
 import {getBaseFileName} from "~/api/utils/utils";
 import {listen, TauriEvent, UnlistenFn} from "@tauri-apps/api/event";
+import {pickFile} from "~/api/utils/fns";
 
 export interface FileInputProps {
     path: Accessor<string>,
@@ -29,7 +29,7 @@ export default function FileInput(props: FileInputProps) {
             rounded-xl
             flex drop-shadow-md`}
                 onClick={async () => {
-                    const file: string = await invoke("open_file_dialog")
+                    const file = await pickFile()
                     props.setPath(file)
                 }}
     >

@@ -1,8 +1,8 @@
 import {BasicAction} from "~/api/action/Action";
-import {invoke} from "@tauri-apps/api";
 import {FaSolidVolumeHigh} from "solid-icons/fa";
 import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
+import {beep} from "~/api/utils/fns";
 
 const ID = "beep"
 
@@ -21,7 +21,7 @@ export default class BeepAction implements BasicAction {
     description = () => "Play a beep sound";
 
     async execute(): Promise<void> {
-        return invoke("beep")
+        return beep()
     }
 
     static register(factory: BlockFactory) {

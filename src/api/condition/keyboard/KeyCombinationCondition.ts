@@ -4,7 +4,7 @@ import BlockFactory from "~/api/block/BlockFactory";
 import {FaSolidKeyboard} from "solid-icons/fa";
 import KeyCombinationForm from "~/api/condition/keyboard/KeyCombinationForm";
 import KeyCombinationData, {combinationToString} from "~/api/condition/keyboard/KeyboardCombinationData";
-import {invoke} from "@tauri-apps/api";
+import {isCombinationPressed} from "~/api/utils/fns";
 
 const ID = "key-combination"
 
@@ -30,9 +30,7 @@ export class KeyCombinationCondition implements Condition<KeyCombinationData> {
     }
 
     async eval(): Promise<boolean> {
-        return invoke("is_combination_pressed", {
-            combination: this.data
-        })
+        return isCombinationPressed(this.data)
     }
 
     static register(factory: BlockFactory) {

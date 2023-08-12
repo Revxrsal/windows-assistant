@@ -3,7 +3,7 @@
 
 use action::{
     beep::beep,
-    file::{open_file_dialog, run_file},
+    file::{pick_file, run_file},
     url::open_browser,
 };
 use condition::{
@@ -23,7 +23,7 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             setup_scheduler,
             beep,
-            open_file_dialog,
+            pick_file,
             open_browser,
             run_file,
             get_battery,

@@ -2,8 +2,8 @@ import Action from "~/api/action/Action";
 import BlockMetadata from "~/api/block/BlockMetadata";
 import BlockFactory from "~/api/block/BlockFactory";
 import OpenBrowserForm from "~/api/action/open-browser/OpenBrowserForm";
-import {invoke} from "@tauri-apps/api";
 import {AiOutlineLink} from "solid-icons/ai";
+import {openBrowser} from "~/api/utils/fns";
 
 const ID = "openBrowser"
 
@@ -31,9 +31,7 @@ export default class OpenBrowserAction implements Action<OpenBrowserData> {
     }
 
     async execute(): Promise<void> {
-        return invoke("open_browser", {
-            url: this.data.url,
-        })
+        return openBrowser(this.data.url)
     }
 
     static register(factory: BlockFactory) {
