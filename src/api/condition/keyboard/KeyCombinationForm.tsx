@@ -12,7 +12,7 @@ export default function KeyCombinationForm(props: BlockFormProps<KeyCombinationD
     )
 
     function submit() {
-        props.submit(new KeyCombinationCondition(data))
+        props.submit(new KeyCombinationCondition({...data}))
     }
 
     return <BlockForm
