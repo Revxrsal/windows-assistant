@@ -23,12 +23,12 @@ pub async fn beep() {
         }
     };
 
-    let src = SineWave::new(440.0)
+    let src = SineWave::new(480.0)
         .take_duration(Duration::from_secs_f32(0.25))
         .amplify(0.2);
 
     sink.append(src);
 
     // Blocks the thread until all queued sounds have been cleared.
-    // sink.sleep_until_end();
+    sink.sleep_until_end();
 }
