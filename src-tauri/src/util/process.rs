@@ -5,7 +5,7 @@ use winapi::{
     um::{
         handleapi::CloseHandle,
         processthreadsapi::OpenProcess,
-        psapi::{EnumProcessModules, EnumProcesses, GetModuleFileNameExW},
+        psapi::{EnumProcesses, EnumProcessModules, GetModuleFileNameExW},
         winnt::{PROCESS_QUERY_INFORMATION, PROCESS_VM_READ},
     },
 };
