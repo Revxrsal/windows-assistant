@@ -60,7 +60,10 @@ export default function KeyInput(props: {
     }
 
     document.addEventListener("keydown", listener)
-    onCleanup(() => document.removeEventListener("keydown", listener))
+    onCleanup(() => {
+        setListening(false);
+        document.removeEventListener("keydown", listener);
+    })
     return (
         <div class={"flex flex-col justify-around content-center items-center"}>
             <p class={"mb-5 text text-3xl"}>
