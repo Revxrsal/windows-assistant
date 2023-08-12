@@ -33,13 +33,8 @@ export class BatteryLevelCondition implements Condition<BatteryConditionData> {
     }
 
     async eval(): Promise<boolean> {
-        // const battery = (await invoke("get_battery") as number) * 100
-        // return battery <= this.data.battery
-        const isBraveRunning: boolean = await invoke("is_process_running", {
-            processPath: "C:\\Program Files\\BraveSoftware\\Brave-Browser-Beta\\Application\\brave.exe"
-        });
-        console.log(isBraveRunning);
-        return isBraveRunning;
+        const battery = (await invoke("get_battery") as number) * 100
+        return battery <= this.data.battery
     }
 
     static register(factory: BlockFactory) {
