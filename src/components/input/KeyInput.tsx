@@ -1,4 +1,4 @@
-import {createSignal, onCleanup} from "solid-js";
+import {createSignal, onCleanup, onMount} from "solid-js";
 import {reconcile, SetStoreFunction} from "solid-js/store";
 import KeyCombinationData, {
     combinationToString,
@@ -59,7 +59,7 @@ export default function KeyInput(props: {
         }
     }
 
-    document.addEventListener("keydown", listener)
+    onMount(() => document.addEventListener("keydown", listener))
     onCleanup(() => {
         setListening(false);
         document.removeEventListener("keydown", listener);
