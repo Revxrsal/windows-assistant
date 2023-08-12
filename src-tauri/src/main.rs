@@ -7,7 +7,10 @@ use action::{
     file::{open_file_dialog, run_file},
     url::open_browser,
 };
-use condition::battery::{get_battery, is_charging};
+use condition::{
+    battery::{get_battery, is_charging},
+    keyboard::{is_combination_pressed}
+};
 use scheduler::setup_scheduler;
 
 pub mod action;
@@ -25,6 +28,7 @@ fn main() {
             run_file,
             get_battery,
             is_charging,
+            is_combination_pressed,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
