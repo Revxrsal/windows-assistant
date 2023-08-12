@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
-use winapi::um::winuser::{GetAsyncKeyState, VK_CONTROL, VK_LWIN, VK_MENU, VK_RETURN, VK_RWIN, VK_SHIFT, VK_TAB};
+use winapi::um::winuser::{VK_CONTROL, VK_LWIN, VK_MENU, VK_RETURN, VK_RWIN, VK_SHIFT, VK_TAB};
+
 use crate::util::keyboard::is_pressed;
 
 /// Represents a key combination. This should be kept in parity
