@@ -5,12 +5,12 @@ import "./root.css";
 import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
-import {addPollFunction} from "~/scheduler/ApplicationScheduler";
+import {addPollFunction, saveTriggeredConditions} from "~/scheduler/ApplicationScheduler";
 import {storage} from "~/sample/Routines";
 import {invoke} from "@tauri-apps/api";
 
 function disableContextMenu() {
-    document.addEventListener("contextmenu", event => event.preventDefault());
+    document.addEventListener("contextmenu", event   => event.preventDefault());
 }
 
 export default function Root() {
@@ -18,6 +18,7 @@ export default function Root() {
         addPollFunction(() => storage.routines)
         disableContextMenu()
         await invoke("setup_scheduler")
+        window.addEventListener("beforeunload", () => saveTriggeredConditions(), false);
     })
     return (
         <Html lang="en" classList={{
