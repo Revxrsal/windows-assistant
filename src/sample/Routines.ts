@@ -3,7 +3,6 @@ import {createStore} from "solid-js/store";
 import {actions, registerActions} from "~/api/action/ActionRegistry";
 import {conditions, registerConditions} from "~/api/condition/ConditionRegistry";
 import {createEffect} from "solid-js";
-import {generateRandomId} from "~/api/utils/utils";
 
 registerConditions();
 registerActions();
@@ -37,8 +36,4 @@ export function loadStoredRoutines(): Routine[] {
 }
 
 createEffect(() => localStorage.setItem("assistant.routines", JSON.stringify([...storage.routines])))
-
-export function createEmptyRoutine(): Routine {
-    return {id: generateRandomId().toString(), actions: [], conditions: [], name: ""}
-}
 
