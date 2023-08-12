@@ -5,7 +5,7 @@ use tauri::api::dialog::blocking::FileDialogBuilder;
 use crate::util::open_file;
 
 #[tauri::command]
-pub async fn open_file_dialog() -> String {
+pub async fn pick_file() -> String {
     let dialog_result = FileDialogBuilder::new()
         .pick_file()
         .unwrap_or(PathBuf::new());
