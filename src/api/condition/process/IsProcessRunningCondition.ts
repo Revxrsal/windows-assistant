@@ -16,7 +16,7 @@ const METADATA: BlockMetadata = {
     id: ID,
     displayName: "App start",
     description: "Triggered when a specific application is open",
-    backgroundClass: "bg-green-500 dark:bg-green-300",
+    backgroundClass: "bg-violet-500 dark:bg-violet-300",
     icon: (props) => AiFillAppstore(props),
     form: (props) => ProcessRunningForm(props)
 }
