@@ -7,8 +7,8 @@ import {ProcessRunningCondition} from "~/api/condition/process/IsProcessRunningC
 export const conditions = new BlockFactory("condition")
 
 export function registerConditions() {
+    ProcessRunningCondition.register(conditions)
+    KeyCombinationCondition.register(conditions)
     BatteryLevelCondition.register(conditions)
     IsChargingCondition.register(conditions)
-    KeyCombinationCondition.register(conditions)
-    ProcessRunningCondition.register(conditions)
 }
