@@ -10,27 +10,27 @@
   "type": "module",
   "devDependencies": {
     "@tauri-apps/cli": "^1.4.0",
-    "@typescript-eslint/eslint-plugin": "^6.2.0",
-    "@typescript-eslint/parser": "^6.2.0",
-    "autoprefixer": "^10.4.13",
-    "eslint": "^8.46.0",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.47.0",
     "eslint-plugin-solid": "^0.12.1",
-    "postcss": "^8.4.21",
-    "solid-start-node": "^0.2.19",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.4",
-    "vite": "^4.4.6",
+    "postcss": "^8.4.27",
+    "solid-start-node": "^0.2.32",
+    "tailwindcss": "^3.3.3",
+    "typescript": "^4.9.5",
+    "vite": "^4.4.9",
     "vite-plugin-eslint": "^1.8.1"
   },
   "dependencies": {
-    "@solidjs/meta": "^0.28.2",
-    "@solidjs/router": "^0.8.2",
+    "@solidjs/meta": "^0.28.6",
+    "@solidjs/router": "^0.8.3",
     "@tauri-apps/api": "^1.4.0",
-    "pnpm": "^8.6.11",
+    "pnpm": "^8.6.12",
     "solid-icons": "^1.0.11",
-    "solid-js": "^1.7.8",
-    "solid-start": "^0.2.29",
-    "undici": "^5.15.1"
+    "solid-js": "^1.7.11",
+    "solid-start": "^0.2.32",
+    "undici": "^5.23.0"
   },
   "engines": {
     "node": ">=16"

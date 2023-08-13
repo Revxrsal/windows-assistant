@@ -12,6 +12,7 @@ use condition::{
     process::is_process_running,
 };
 use scheduler::setup_scheduler;
+use tauri_plugin_autostart::MacosLauncher;
 
 pub mod action;
 pub mod util;
@@ -20,6 +21,10 @@ pub mod scheduler;
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_autostart::init(
+            MacosLauncher::LaunchAgent,
+            // Optional args
+            Some(vec![])))
         .invoke_handler(tauri::generate_handler![
             setup_scheduler,
             beep,
