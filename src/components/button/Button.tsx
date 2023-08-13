@@ -7,18 +7,18 @@ export interface ButtonProps extends ComponentProps<"button"> {
     class?: string
 }
 
-function getClass(variant: ButtonVariant) {
+function getClass(variant?: ButtonVariant) {
     switch (variant) {
         case "secondary":
             return "secondary-button"
         case "outline":
             return "outline-button"
-        case "primary":
-            return "primary-button"
+        default:
+            return "primary-button";
     }
 }
 
 export default function Button(props: ButtonProps) {
     const [local, buttonProps] = splitProps(props, ["variant", "class"]);
-    return <button class={`${getClass(local.variant || "primary")} ${local.class || ""}`} {...buttonProps}/>;
+    return <button class={`${getClass(local.variant)} ${local.class || ""}`} {...buttonProps}/>;
 }
