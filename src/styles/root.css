@@ -12,7 +12,7 @@
 
 main {
     /* For the sidebar */
-    @apply pl-[300px] flex h-screen flex-col pt-8
+    @apply pl-[300px] flex h-full flex-col pt-8
 }
 
 body {
