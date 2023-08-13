@@ -1,5 +1,5 @@
 // @refresh reload
-import {onMount, Suspense} from "solid-js";
+import {createEffect, onMount, Suspense} from "solid-js";
 import {Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title,} from "solid-start";
 import "./styles/root.css";
 import "./styles/buttons.css";
@@ -9,6 +9,7 @@ import {preferences} from "~/storage/preferences";
 import {addPollFunction, saveTriggeredConditions} from "~/scheduler/ApplicationScheduler";
 import {storage} from "~/sample/Routines";
 import {setupScheduler} from "~/api/utils/fns";
+import {disable as disableAutoStart, enable as enableAutoStart} from "tauri-plugin-autostart-api";
 
 function disableContextMenu() {
     document.addEventListener("contextmenu", event => event.preventDefault());
@@ -20,6 +21,13 @@ export default function Root() {
         disableContextMenu()
         await setupScheduler()
         window.addEventListener("beforeunload", () => saveTriggeredConditions(), false);
+    })
+    createEffect(async () => {
+        if (!preferences.autoStart) {
+            await enableAutoStart();
+        } else {
+            await disableAutoStart();
+        }
     })
     return (
         <Html lang="en" classList={{
