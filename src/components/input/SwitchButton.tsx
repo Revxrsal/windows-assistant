@@ -28,7 +28,7 @@ export default function SwitchButton(props: SwitchButtonProps) {
                  dark:border-gray-600
                  peer-checked:bg-blue-600">
         </div>
-        <span class="ml-3 text-sm font-medium text">
+        <span class="ml-4 text-[15px] font-medium text">
             {props.label}
         </span>
     </label>
