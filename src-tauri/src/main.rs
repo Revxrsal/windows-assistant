@@ -1,6 +1,8 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
+use tauri_plugin_autostart::MacosLauncher;
+
 use action::{
     beep::beep,
     file::{pick_file, run_file},
@@ -12,7 +14,6 @@ use condition::{
     process::is_process_running,
 };
 use scheduler::setup_scheduler;
-use tauri_plugin_autostart::MacosLauncher;
 
 pub mod action;
 pub mod util;
@@ -23,8 +24,8 @@ fn main() {
     tauri::Builder::default()
         .plugin(tauri_plugin_autostart::init(
             MacosLauncher::LaunchAgent,
-            // Optional args
-            Some(vec![])))
+            None,
+        ))
         .invoke_handler(tauri::generate_handler![
             setup_scheduler,
             beep,
