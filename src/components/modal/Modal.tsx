@@ -53,7 +53,9 @@ export default function Modal(props: ModalProps) {
     )
 
     return (
-        <div>
+        <div classList={{
+            "sr-only": !props.show()
+        }}>
             <Show when={props.show()}>
                 <div
                     role="presentation"
