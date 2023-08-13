@@ -30,16 +30,6 @@ body {
     text-stone-800 dark:text-stone-50;
 }
 
-.btn {
-    @apply font-bold py-2 px-4 rounded;
-}
-.btn-blue {
-    @apply bg-blue-500 text-white;
-}
-.btn-blue:hover {
-    @apply bg-blue-700;
-}
-
 @layer components {
     .sidebar {
         @apply fixed top-0 left-0 h-screen w-[300px]
@@ -69,10 +59,6 @@ body {
 
     .text {
         @apply text-stone-800 dark:text-stone-50
-    }
-
-    .text-inverted {
-        @apply dark:text-stone-800 text-stone-50
     }
 
     .fill {

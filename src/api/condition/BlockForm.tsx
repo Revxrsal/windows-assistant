@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {JSX} from "solid-js";
 import {BlockFormProps} from "~/api/block/BlockMetadata";
+import Button from "~/components/button/Button";
 
 export interface FormProps {
     title: string
@@ -20,11 +21,13 @@ export default function BlockForm(props: FormProps) {
             <div>
                 {props.children}
             </div>
-            <button
-                class={"bg-blue-600 disabled:bg-stone-400 dark:disabled:bg-stone-600 w-32 h-10 mx-12 my-12 rounded text-stone-200 enabled:hover:scale-105 transition"}
+            <Button
+                class="m-12 w-32 p-4"
                 disabled={props.disabled == undefined ? false : props.disabled}
                 onClick={props.submit}
-            >{props.configProps.replace ? "Update" : "Create"}</button>
+            >
+                {props.configProps.replace ? "Update" : "Create"}
+            </Button>
         </div>
     </>
 }

@@ -1,7 +1,8 @@
 // @refresh reload
 import {onMount, Suspense} from "solid-js";
 import {Body, ErrorBoundary, FileRoutes, Head, Html, Meta, Routes, Scripts, Title,} from "solid-start";
-import "./root.css";
+import "./styles/root.css";
+import "./styles/buttons.css";
 import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
@@ -10,7 +11,7 @@ import {storage} from "~/sample/Routines";
 import {setupScheduler} from "~/api/utils/fns";
 
 function disableContextMenu() {
-    document.addEventListener("contextmenu", event   => event.preventDefault());
+    document.addEventListener("contextmenu", event => event.preventDefault());
 }
 
 export default function Root() {

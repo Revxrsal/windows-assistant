@@ -13,6 +13,7 @@ import {AnyBlock} from "~/api/block/Block";
 import {useNavigate} from "@solidjs/router";
 import {BsTrash} from "solid-icons/bs";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
+import Button from "~/components/button/Button";
 
 interface ConfigureBlock {
     type: "actions" | "conditions"
@@ -145,16 +146,16 @@ export default function RoutineForm(props: {
                 />
             </div>
             <Show when={!props.replace}>
-                <button
-                    class={"bg-blue-600 w-32 h-10 rounded m-12 text-stone-200 enabled:hover:scale-105 disabled:opacity-40 transition"}
-                    disabled={props.routine.conditions.length == 0 || props.routine.actions.length == 0 || props.routine.name.length == 0}
+                <Button
+                    class="p-3 m-12"
+                    disabled={props.routine.conditions.length == 0 || props.routine.actions.length == 0}
                     onClick={() => {
                         props.onFinish({...props.routine})
                         navigate("/routines")
                     }}
                 >
                     {props.replace ? "Update" : "Create"}
-                </button>
+                </Button>
             </Show>
             <ConditionsModal
                 title={"Pick a condition"}
