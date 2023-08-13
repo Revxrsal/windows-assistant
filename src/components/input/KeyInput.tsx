@@ -4,6 +4,7 @@ import KeyCombinationData, {
     combinationToString,
     createEmptyCombination
 } from "~/api/condition/keyboard/KeyboardCombinationData";
+import Button from "~/components/button/Button";
 
 export default function KeyInput(props: {
     data: KeyCombinationData,
@@ -69,14 +70,18 @@ export default function KeyInput(props: {
             <p class={"mb-5 text text-3xl"}>
                 {combinationToString(props.data)}
             </p>
-            <button class={"bg-rose-900 text-stone-200 p-3 rounded transition-all w-32 focus:outline-none"} classList={{
-                "bg-rose-800": listening(),
-                "ring": listening(),
-                "ring-red-500": listening()
-            }}
-                    onClick={() => setListening(v => !v)}>
+            <Button
+                onClick={() => setListening(v => !v)}
+                class={"bg-rose-900 w-32"}
+                classList={{
+                    "bg-rose-800": listening(),
+                    "ring": listening(),
+                    "ring-red-500": listening(),
+                    "focus:ring-0": !listening(),
+                }}
+            >
                 {listening() ? "Recording..." : "Record"}
-            </button>
+            </Button>
         </div>
     );
 }
