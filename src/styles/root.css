@@ -12,11 +12,15 @@
 
 main {
     /* For the sidebar */
-    @apply pl-[300px] flex h-full flex-col pt-8
+    @apply pl-[300px] flex h-screen flex-col pt-8
 }
 
 body {
     @apply bg-stone-100 dark:bg-stone-800;
+}
+
+button {
+    @apply text;
 }
 
 .titlebar {
@@ -59,6 +63,10 @@ body {
 
     .text {
         @apply text-stone-800 dark:text-stone-50
+    }
+
+    .text-invert {
+        @apply text-stone-50 dark:text-stone-800
     }
 
     .fill {
