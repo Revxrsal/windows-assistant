@@ -14,6 +14,7 @@ import {useNavigate} from "@solidjs/router";
 import {BsTrash} from "solid-icons/bs";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
 import Button from "~/components/button/Button";
+import Title from "~/components/text/Title";
 
 interface ConfigureBlock {
     type: "actions" | "conditions"
@@ -50,9 +51,9 @@ export default function RoutineForm(props: {
     return (
         <main>
             <div class={"flex items-center"}>
-                <p class="ml-12 my-7 text font-bold text-2xl">
+                <Title size={2} class={"my-7"}>
                     {props.replace ? "Update routine" : "New routine"}
-                </p>
+                </Title>
                 <Show when={props.replace}>
                     <button
                         class="p-3 z-10 ml-5 fill-green-700 dark:fill-green-500 rounded
@@ -147,7 +148,7 @@ export default function RoutineForm(props: {
             </div>
             <Show when={!props.replace}>
                 <Button
-                    class="p-3 m-12"
+                    class="m-12 w-32 h-16 text-xl"
                     disabled={props.routine.conditions.length == 0 || props.routine.actions.length == 0}
                     onClick={() => {
                         props.onFinish({...props.routine})
