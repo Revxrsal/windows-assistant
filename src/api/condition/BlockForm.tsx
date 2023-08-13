@@ -2,6 +2,8 @@
 import {JSX} from "solid-js";
 import {BlockFormProps} from "~/api/block/BlockMetadata";
 import Button from "~/components/button/Button";
+import Column from "~/components/layout/Column";
+import Title from "~/components/text/Title";
 
 export interface FormProps {
     title: string
@@ -14,20 +16,20 @@ export interface FormProps {
 
 export default function BlockForm(props: FormProps) {
     return <>
-        <div class={`flex flex-col items-center content-center justify-center ${props.class || ""}`}>
-            <p class="text font-bold text-5xl pb-12">
+        <Column class={`center ${props.class || ""}`}>
+            <Title size={5} class={"mt-0"}>
                 {props.title}
-            </p>
+            </Title>
             <div>
                 {props.children}
             </div>
             <Button
-                class="m-12 w-32 p-4"
+                class="m-12 w-32"
                 disabled={props.disabled == undefined ? false : props.disabled}
                 onClick={props.submit}
             >
                 {props.configProps.replace ? "Update" : "Create"}
             </Button>
-        </div>
+        </Column>
     </>
 }
