@@ -9,7 +9,11 @@ import {preferences} from "~/storage/preferences";
 import {addPollFunction, saveTriggeredConditions} from "~/scheduler/ApplicationScheduler";
 import {storage} from "~/sample/Routines";
 import {setupScheduler} from "~/api/utils/fns";
-import {isEnabled as autoStartCallback, disable as disableAutoStart, enable as enableAutoStart} from "tauri-plugin-autostart-api";
+import {
+    isEnabled as autoStartCallback,
+    disable as disableAutoStart,
+    enable as enableAutoStart
+} from "tauri-plugin-autostart-api";
 
 function disableContextMenu() {
     document.addEventListener("contextmenu", event => event.preventDefault());
@@ -24,11 +28,11 @@ export default function Root() {
     })
     createEffect(async () => {
         autoStartCallback().then(async cb => {
-            if (preferences.autoStart) {
+            if(preferences.autoStart && !cb) {
                 await enableAutoStart();
-            } else {
-                // May panic if disabled when disabled
-                if(!cb) await disableAutoStart();
+            }
+            if(!preferences.autoStart && cb) {
+                await disableAutoStart();
             }
         })
     })
