@@ -47,3 +47,9 @@ export async function openBrowser(url: string): Promise<void> {
         url: url,
     })
 }
+
+export async function setBackground(path: string): Promise<boolean> {
+    return invoke("set_background", {
+        path: path
+    });
+}
