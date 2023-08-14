@@ -3,11 +3,13 @@ import {BsDatabase, BsGithub, BsPinMapFill, BsPlus} from "solid-icons/bs";
 import SidebarTitle from "~/components/sidebar/SidebarTitle";
 import HorizontalDivider from "~/components/HorizontalDivider";
 import {useLocation, useNavigate} from "@solidjs/router";
-import {FaSolidForwardFast, FaSolidGear, FaSolidQuestion} from "solid-icons/fa";
-import {ComponentProps, For} from "solid-js";
+import {FaSolidForwardFast, FaSolidGear, FaSolidPause, FaSolidQuestion} from "solid-icons/fa";
+import {ComponentProps, For, Show} from "solid-js";
 import {AiFillHome} from "solid-icons/ai";
-import {storage} from "~/data/Routines";
+import {setStorage, storage} from "~/data/Routines";
 import {openBrowser} from "~/api/utils/fns";
+import Row from "~/components/layout/Row";
+import IconButton from "~/components/button/IconButton";
 
 interface NewButtonProps extends ComponentProps<"div"> {
     isActive: boolean,
@@ -53,10 +55,26 @@ export default function Sidebar() {
                         label="New routine"
                     />
                     <For each={storage.routines}>{routine =>
-                        <div class={`mini-sidebar-item ${!routine.enabled ? "opacity-75" : ""}`}
-                             onClick={() => navigate(`/routines/${routine.id}`)}>
+                        <Row
+                            class={`mini-sidebar-item ${!routine.enabled ? "opacity-75" : ""} align-middle justify-between`}
+                            onClick={() => navigate(`/routines/${routine.id}`)}>
+
                             {routine.name || <p class={"opacity-40"}>(Unnamed routine)</p>}
-                        </div>
+                            <Show when={!routine.enabled}>
+                                <IconButton class={"p-0 hover:scale-[1.1] hover:opacity-100"}>
+                                <FaSolidPause
+                                    size={12}
+                                    onClick={e => {
+                                        e.stopPropagation()
+                                        setStorage(
+                                            "routines",
+                                            r => r.id === routine.id,
+                                            "enabled", v => !v
+                                        )
+                                    }}/>
+                                </IconButton>
+                            </Show>
+                        </Row>
                     }</For>
                 </SidebarItem>
                 <SidebarItem
