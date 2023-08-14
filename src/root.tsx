@@ -23,7 +23,7 @@ export default function Root() {
         window.addEventListener("beforeunload", () => saveTriggeredConditions(), false);
     })
     createEffect(async () => {
-        if (!preferences.autoStart) {
+        if (preferences.autoStart) {
             await enableAutoStart();
         } else {
             await disableAutoStart();
