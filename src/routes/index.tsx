@@ -1,10 +1,10 @@
-import Title from "~/components/text/Title";
+import Header from "~/components/text/Header";
 
 export default function Home() {
     return (
         <main>
-            <Title size={6}>Windows Assistant</Title>
-            <Title size={4}>Getting started</Title>
+            <Header size={6}>Windows Assistant</Header>
+            <Header size={4}>Getting started</Header>
         </main>
     )
 }

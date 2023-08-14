@@ -3,7 +3,7 @@ import {JSX} from "solid-js";
 import {BlockFormProps} from "~/api/block/BlockMetadata";
 import Button from "~/components/button/Button";
 import Column from "~/components/layout/Column";
-import Title from "~/components/text/Title";
+import Header from "~/components/text/Header";
 
 export interface FormProps {
     title: string
@@ -17,9 +17,9 @@ export interface FormProps {
 export default function BlockForm(props: FormProps) {
     return <>
         <Column class={`center ${props.class || ""}`}>
-            <Title size={5} class={"mt-0"}>
+            <Header size={5} class={"mt-0"}>
                 {props.title}
-            </Title>
+            </Header>
             <div>
                 {props.children}
             </div>

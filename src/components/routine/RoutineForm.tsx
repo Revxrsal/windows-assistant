@@ -14,7 +14,7 @@ import {useNavigate} from "@solidjs/router";
 import {BsTrash} from "solid-icons/bs";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
 import Button from "~/components/button/Button";
-import Title from "~/components/text/Title";
+import Header from "~/components/text/Header";
 import IconButton from "~/components/button/IconButton";
 import Column from "~/components/layout/Column";
 
@@ -53,9 +53,9 @@ export default function RoutineForm(props: {
     return (
         <main>
             <div class={"flex items-center"}>
-                <Title size={2} class={"my-7"}>
+                <Header size={2} class={"my-7"}>
                     {props.replace ? "Update routine" : "New routine"}
-                </Title>
+                </Header>
                 <Show when={props.replace}>
                     <IconButton
                         class="ml-5 fill-green-700 dark:fill-green-500 hover:bg-green-700 hover:fill-stone-200 dark:hover:fill-stone-200"

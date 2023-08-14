@@ -13,7 +13,7 @@ export interface TitleProps extends ComponentProps<"h1"> {
     size: 1 | 2 | 3 | 4 | 5 | 6
 }
 
-export default function Title(props: TitleProps) {
+export default function Header(props: TitleProps) {
     const [local, h1Props] = splitProps(props, ["size", "class"])
     return <h1
         class={`text-${props.size == 1 ? "" : props.size}xl m-12 font-bold text ${local.class || ""}`}
