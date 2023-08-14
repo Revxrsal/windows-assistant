@@ -1,6 +1,7 @@
 import {createStore} from "solid-js/store";
 import {createEffect} from "solid-js";
 import {isSystemDarkMode} from "~/util/darkMode";
+import {enable, isEnabled} from "tauri-plugin-autostart-api";
 
 export interface Preferences {
     darkTheme: boolean
@@ -12,9 +13,13 @@ export const [preferences, setPreferences] = createStore<Preferences>(
 )
 
 function createDefaultPreferences(): Preferences {
+    isEnabled().then(cb => {
+        if(cb) return;
+        enable().then();
+    })
     return {
         darkTheme: isSystemDarkMode(),
-        autoStart: false
+        autoStart: true
     }
 }
 
