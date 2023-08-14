@@ -1,13 +1,13 @@
 import {preferences, setPreferences} from "~/storage/preferences";
 import SwitchButton from "~/components/input/SwitchButton";
-import Title from "~/components/text/Title";
+import Header from "~/components/text/Header";
 import {ComponentProps, splitProps} from "solid-js";
 
 export default function Settings() {
     return (
         <main>
-            <Title size={6}>Settings</Title>
-            <Title size={4}>Appearance</Title>
+            <Header size={6}>Settings</Header>
+            <Header size={4}>Appearance</Header>
             <SettingsArea>
                 <SwitchButton
                     checked={preferences.darkTheme}
@@ -16,7 +16,7 @@ export default function Settings() {
                     class={"m-12 mt-8"}
                 />
             </SettingsArea>
-            <Title size={4}>Startup</Title>
+            <Header size={4}>Startup</Header>
             <SettingsArea>
                 <SwitchButton
                     checked={preferences.autoStart}

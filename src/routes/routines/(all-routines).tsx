@@ -1,9 +1,9 @@
-import {BsGear, BsTrash} from "solid-icons/bs";
-import {createSignal, For, onMount, Show} from "solid-js";
+import {BsTrash} from "solid-icons/bs";
+import {createSignal, For, Show} from "solid-js";
 import {useNavigate} from "solid-start";
 import Routine from "~/api/routine/Routine";
-import Title from "~/components/text/Title";
-import {setStorage, storage} from "~/sample/Routines";
+import Header from "~/components/text/Header";
+import {setStorage, storage} from "~/data/Routines";
 import IconButton from "~/components/button/IconButton";
 import Row from "~/components/layout/Row";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
@@ -36,13 +36,6 @@ function RoutineBlock(props: { routine: Routine }) {
                 <p class={"text-xl font-bold"}>{props.routine.name}</p>
                 <Row class={"center"}>
                     <IconButton
-                        class={"mx-3 hover:bg-blue-600 hover:text-stone-200"}
-                        onClick={e => {
-                            e.stopPropagation();
-                        }}>
-                        <BsGear size={24}/>
-                    </IconButton>
-                    <IconButton
                         class={"mx-3 text-red-00 hover:bg-red-500 hover:text-stone-200"}
                         onClick={e => {
                             e.stopPropagation();
@@ -73,7 +66,7 @@ function RoutineBlock(props: { routine: Routine }) {
 function RoutinesGrid() {
     return (
         <>
-            <Title size={5}>My Routines</Title>
+            <Header size={5}>My Routines</Header>
             <div class={"grid xl:grid-cols-2 lg:grid-cols-1"}>
                 <For each={storage.routines}>
                     {(routine) => <RoutineBlock routine={routine}/>}
@@ -89,25 +82,25 @@ export default function AllRoutines() {
         <main>
             <Show when={storage.routines.length == 0} fallback={<RoutinesGrid/>}>
                 <Column class={"center align-middle select-none"}>
-                    <Title
+                    <Header
                         size={4}
                         class={"text mx-12 text-center"}
                     >
                         You haven't got any routines!
-                    </Title>
+                    </Header>
                     <img
                         src="empty-box.png"
                         alt="No routines (Empty box)"
                         class={"aspect-square w-64 h-64"}
                     />
-                    <Title size={1} class={"font-normal"}>
+                    <Header size={1} class={"font-normal"}>
                         <Button
                             class={"w-64 h-14"}
                             onClick={() => navigate("/routines/new")}
                         >
                             Create a routine
                         </Button>
-                    </Title>
+                    </Header>
                 </Column>
             </Show>
         </main>

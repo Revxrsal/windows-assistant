@@ -5,6 +5,7 @@ import KeyCombinationData, {
     createEmptyCombination
 } from "~/api/condition/keyboard/KeyboardCombinationData";
 import Button from "~/components/button/Button";
+import Column from "~/components/layout/Column";
 
 export default function KeyInput(props: {
     data: KeyCombinationData,
@@ -66,7 +67,7 @@ export default function KeyInput(props: {
         document.removeEventListener("keydown", listener);
     })
     return (
-        <div class={"flex flex-col justify-around content-center items-center"}>
+        <Column class={"justify-around content-center items-center"}>
             <p class={"mb-5 text text-3xl"}>
                 {combinationToString(props.data)}
             </p>
@@ -82,6 +83,6 @@ export default function KeyInput(props: {
             >
                 {listening() ? "Recording..." : "Record"}
             </Button>
-        </div>
+        </Column>
     );
 }

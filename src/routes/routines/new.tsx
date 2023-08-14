@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import {createStore} from "solid-js/store";
-import {setStorage} from "~/sample/Routines";
-import RoutineForm from "~/components/routine/EditRoutineForm";
+import {setStorage} from "~/data/Routines";
+import RoutineForm from "~/components/routine/RoutineForm";
 import {createEmptyRoutine} from "~/api/routine/Routine";
 
 export default function NewRoutine() {

@@ -35,7 +35,7 @@ function Gallery(props: GalleryProps) {
         }}/>
 }
 
-export default function ConditionsModal(props: BlockModalProps) {
+export default function PickBlockModal(props: BlockModalProps) {
     const [formMenu, setFormMenu] = createSignal<JSX.Element | null>();
     createEffect(() => {
         if (!props.show())

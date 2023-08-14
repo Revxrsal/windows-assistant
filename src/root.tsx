@@ -7,12 +7,12 @@ import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
 import {addPollFunction, saveTriggeredConditions} from "~/scheduler/ApplicationScheduler";
-import {storage} from "~/sample/Routines";
+import {storage} from "~/data/Routines";
 import {setupScheduler} from "~/api/utils/fns";
 import {
-    isEnabled as autoStartCallback,
     disable as disableAutoStart,
-    enable as enableAutoStart
+    enable as enableAutoStart,
+    isEnabled as isAutostartEnabled
 } from "tauri-plugin-autostart-api";
 
 function disableContextMenu() {
@@ -27,14 +27,11 @@ export default function Root() {
         window.addEventListener("beforeunload", () => saveTriggeredConditions(), false);
     })
     createEffect(async () => {
-        autoStartCallback().then(async cb => {
-            if(preferences.autoStart && !cb) {
-                await enableAutoStart();
-            }
-            if(!preferences.autoStart && cb) {
-                await disableAutoStart();
-            }
-        })
+        const isEnabled = await isAutostartEnabled();
+        if (preferences.autoStart && !isEnabled)
+            await enableAutoStart();
+        if (!preferences.autoStart && isEnabled)
+            await disableAutoStart();
     })
     return (
         <Html lang="en" classList={{

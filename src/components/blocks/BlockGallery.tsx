@@ -1,8 +1,8 @@
 import {For} from "solid-js";
 import BlockCard from "~/components/blocks/BlockCard";
-import {useNavigate} from "@solidjs/router";
 import BlockFactory from "~/api/block/BlockFactory";
 import BlockMetadata from "~/api/block/BlockMetadata";
+import Column from "~/components/layout/Column";
 
 export function BlockGallery(props: {
     factory: BlockFactory,
@@ -12,7 +12,7 @@ export function BlockGallery(props: {
     const metas = props.factory.getRegisteredBlockMetas();
 
     return (
-        <div class={"flex flex-col"}>
+        <Column>
             <For each={metas}>{metadata =>
                 <BlockCard
                     metadata={metadata}
@@ -20,6 +20,6 @@ export function BlockGallery(props: {
                     onClick={() => props.onBlockClick(metadata)}
                 />
             }</For>
-        </div>
+        </Column>
     )
 }

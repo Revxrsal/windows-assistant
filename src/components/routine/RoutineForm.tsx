@@ -5,7 +5,7 @@ import Routine from "~/api/routine/Routine";
 import {SetStoreFunction} from "solid-js/store";
 import {actions} from "~/api/action/ActionRegistry";
 import {conditions} from "~/api/condition/ConditionRegistry";
-import ConditionsModal from "~/components/routine/BlockModal";
+import PickBlockModal from "~/components/routine/BlockModal";
 import {AnyAction} from "~/api/action/Action";
 import {AnyCondition} from "~/api/condition/Condition";
 import Modal from "~/components/modal/Modal";
@@ -14,7 +14,9 @@ import {useNavigate} from "@solidjs/router";
 import {BsTrash} from "solid-icons/bs";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
 import Button from "~/components/button/Button";
-import Title from "~/components/text/Title";
+import Header from "~/components/text/Header";
+import IconButton from "~/components/button/IconButton";
+import Column from "~/components/layout/Column";
 
 interface ConfigureBlock {
     type: "actions" | "conditions"
@@ -51,43 +53,42 @@ export default function RoutineForm(props: {
     return (
         <main>
             <div class={"flex items-center"}>
-                <Title size={2} class={"my-7"}>
+                <Header size={2} class={"my-7"}>
                     {props.replace ? "Update routine" : "New routine"}
-                </Title>
+                </Header>
                 <Show when={props.replace}>
-                    <button
-                        class="p-3 z-10 ml-5 fill-green-700 dark:fill-green-500 rounded
-                        hover:bg-green-700 hover:fill-stone-200 dark:hover:fill-stone-200 transition"
+                    <IconButton
+                        class="ml-5 fill-green-700 dark:fill-green-500 hover:bg-green-700 hover:fill-stone-200 dark:hover:fill-stone-200"
                         onClick={e => {
                             e.stopPropagation()
                             props.setRoutine("enabled", v => !v)
                         }}
                     >
                         {props.routine.enabled ? <FaSolidPause size={24}/> : <FaSolidPlay size={24}/>}
-                    </button>
-                    <button
-                        class="p-3 z-10 ml-5 text-red-500 rounded hover:bg-red-500 hover:text-stone-200 transition"
+                    </IconButton>
+                    <IconButton
+                        class="ml-5 text-red-500 hover:bg-red-500 hover:text-stone-200"
                         onClick={e => {
                             e.stopPropagation()
                             props.onDelete?.()
                         }}
                     >
                         <BsTrash size={24}/>
-                    </button>
+                    </IconButton>
                 </Show>
             </div>
-            <div class={"justify-center flex flex-col title m-12 mt-0"}>
+            <Column class={"justify-center title m-12 mt-0"}>
                 <input type="text" placeholder="Routine name..."
                        class="border-none outline-none
                        text-blue-800 dark:text-blue-400
                        bg-stone-100 dark:bg-stone-800"
                        value={props.routine.name}
                        onInput={e => props.setRoutine(() => ({name: e.target.value}))}/>
-            </div>
+            </Column>
             <p class="mx-12 text font-bold text-xl">
                 When all the below conditions are met
             </p>
-            <div class={"flex flex-col m-4"}>
+            <Column class={"m-4"}>
                 <For each={props.routine.conditions}>{(condition, index) =>
                     <BlockCard
                         description={condition.description?.()}
@@ -114,11 +115,11 @@ export default function RoutineForm(props: {
                     text="Add condition"
                     onClick={() => setShowConditions(true)}
                 />
-            </div>
+            </Column>
             <p class="mx-12 text font-bold text-xl">
                 then...
             </p>
-            <div class={"flex flex-col m-4"}>
+            <Column class={"m-4"}>
                 <For each={props.routine.actions}>{(action, index) =>
                     <BlockCard
                         description={action.description()}
@@ -145,7 +146,7 @@ export default function RoutineForm(props: {
                     text="Add action"
                     onClick={() => setShowActions(true)}
                 />
-            </div>
+            </Column>
             <Show when={!props.replace}>
                 <Button
                     class="m-12 w-32 h-16 text-xl"
@@ -154,18 +155,16 @@ export default function RoutineForm(props: {
                         props.onFinish({...props.routine})
                         navigate("/routines")
                     }}
-                >
-                    {props.replace ? "Update" : "Create"}
-                </Button>
+                >Create</Button>
             </Show>
-            <ConditionsModal
+            <PickBlockModal
                 title={"Pick a condition"}
                 factory={conditions}
                 show={showConditions}
                 setShow={setShowConditions}
                 add={condition => props.setRoutine("conditions", v => [...v, condition as AnyCondition])}
             />
-            <ConditionsModal
+            <PickBlockModal
                 title={"Pick an action"}
                 factory={actions}
                 show={showActions}

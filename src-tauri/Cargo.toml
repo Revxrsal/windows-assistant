@@ -25,6 +25,7 @@ normpath = "1.1.1"
 [dependencies.tauri]
 version = "1.4.0"
 features = [
+    "notification-all",
     "dialog-open",
     "window-maximize",
     "window-hide",
