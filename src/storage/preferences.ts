@@ -1,7 +1,7 @@
 import {createStore} from "solid-js/store";
 import {createEffect} from "solid-js";
 import {isSystemDarkMode} from "~/util/darkMode";
-import {enable, isEnabled} from "tauri-plugin-autostart-api";
+import {disable, enable, isEnabled} from "tauri-plugin-autostart-api";
 
 export interface Preferences {
     darkTheme: boolean
@@ -31,5 +31,23 @@ function parsePreferences(): Preferences {
     return JSON.parse(json)
 }
 
-createEffect(() => localStorage.setItem("assistant.preferences", JSON.stringify(preferences)))
+createEffect(() => {
+    localStorage.setItem("assistant.preferences", JSON.stringify(preferences))
+    isEnabled().then(async cb => {
+        if(preferences.autoStart) {
+            if(cb) {
+                console.warn("Internal error: Cannot enable autoStart as it is already enabled.");
+                return;
+            }
+            await enable();
+        }
+        if(!preferences.autoStart) {
+            if(!cb) {
+                console.warn("Internal error: Cannot disable autoStart as it is already disabled.");
+                return;
+            }
+            await disable();
+        }
+    })
+})
 
