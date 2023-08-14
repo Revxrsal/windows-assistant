@@ -15,7 +15,7 @@ export const [preferences, setPreferences] = createStore<Preferences>(
 function createDefaultPreferences(): Preferences {
     // Default enable
     isEnabled().then(cb => {
-        if(cb) return;
+        if(cb || !preferences.autoStart) return;
         enable().then();
     })
     return {
