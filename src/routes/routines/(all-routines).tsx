@@ -1,5 +1,5 @@
-import {BsGear, BsTrash} from "solid-icons/bs";
-import {createSignal, For, onMount, Show} from "solid-js";
+import {BsTrash} from "solid-icons/bs";
+import {createSignal, For, Show} from "solid-js";
 import {useNavigate} from "solid-start";
 import Routine from "~/api/routine/Routine";
 import Title from "~/components/text/Title";
@@ -35,13 +35,6 @@ function RoutineBlock(props: { routine: Routine }) {
             >
                 <p class={"text-xl font-bold"}>{props.routine.name}</p>
                 <Row class={"center"}>
-                    <IconButton
-                        class={"mx-3 hover:bg-blue-600 hover:text-stone-200"}
-                        onClick={e => {
-                            e.stopPropagation();
-                        }}>
-                        <BsGear size={24}/>
-                    </IconButton>
                     <IconButton
                         class={"mx-3 text-red-00 hover:bg-red-500 hover:text-stone-200"}
                         onClick={e => {
