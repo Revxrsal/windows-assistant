@@ -1,5 +1,5 @@
 import {useNavigate, useParams} from "@solidjs/router";
-import {setStorage, storage} from "~/sample/Routines";
+import {setStorage, storage} from "~/data/Routines";
 import RoutineForm from "~/components/routine/EditRoutineForm";
 import {createStore, produce, SetStoreFunction, Store} from "solid-js/store";
 import {createRenderEffect, createSignal} from "solid-js";

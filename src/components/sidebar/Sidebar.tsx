@@ -6,7 +6,7 @@ import {useLocation, useNavigate} from "@solidjs/router";
 import {FaSolidForwardFast, FaSolidGear, FaSolidQuestion} from "solid-icons/fa";
 import {ComponentProps, For} from "solid-js";
 import {AiFillHome} from "solid-icons/ai";
-import {storage} from "~/sample/Routines";
+import {storage} from "~/data/Routines";
 import {openBrowser} from "~/api/utils/fns";
 
 interface NewButtonProps extends ComponentProps<"div"> {

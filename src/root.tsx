@@ -7,7 +7,7 @@ import Sidebar from "~/components/sidebar/Sidebar";
 import TitleBar from "~/components/titlebar/TitleBar";
 import {preferences} from "~/storage/preferences";
 import {addPollFunction, saveTriggeredConditions} from "~/scheduler/ApplicationScheduler";
-import {storage} from "~/sample/Routines";
+import {storage} from "~/data/Routines";
 import {setupScheduler} from "~/api/utils/fns";
 import {
     disable as disableAutoStart,

@@ -3,7 +3,7 @@ import {createSignal, For, onMount, Show} from "solid-js";
 import {useNavigate} from "solid-start";
 import Routine from "~/api/routine/Routine";
 import Title from "~/components/text/Title";
-import {setStorage, storage} from "~/sample/Routines";
+import {setStorage, storage} from "~/data/Routines";
 import IconButton from "~/components/button/IconButton";
 import Row from "~/components/layout/Row";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
