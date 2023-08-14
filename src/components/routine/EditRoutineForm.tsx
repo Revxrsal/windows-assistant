@@ -15,6 +15,7 @@ import {BsTrash} from "solid-icons/bs";
 import {FaSolidPause, FaSolidPlay} from "solid-icons/fa";
 import Button from "~/components/button/Button";
 import Title from "~/components/text/Title";
+import IconButton from "~/components/button/IconButton";
 
 interface ConfigureBlock {
     type: "actions" | "conditions"
@@ -55,25 +56,24 @@ export default function RoutineForm(props: {
                     {props.replace ? "Update routine" : "New routine"}
                 </Title>
                 <Show when={props.replace}>
-                    <button
-                        class="p-3 z-10 ml-5 fill-green-700 dark:fill-green-500 rounded
-                        hover:bg-green-700 hover:fill-stone-200 dark:hover:fill-stone-200 transition"
+                    <IconButton
+                        class="ml-5 fill-green-700 dark:fill-green-500 hover:bg-green-700 hover:fill-stone-200 dark:hover:fill-stone-200"
                         onClick={e => {
                             e.stopPropagation()
                             props.setRoutine("enabled", v => !v)
                         }}
                     >
                         {props.routine.enabled ? <FaSolidPause size={24}/> : <FaSolidPlay size={24}/>}
-                    </button>
-                    <button
-                        class="p-3 z-10 ml-5 text-red-500 rounded hover:bg-red-500 hover:text-stone-200 transition"
+                    </IconButton>
+                    <IconButton
+                        class="ml-5 text-red-500 hover:bg-red-500 hover:text-stone-200"
                         onClick={e => {
                             e.stopPropagation()
                             props.onDelete?.()
                         }}
                     >
                         <BsTrash size={24}/>
-                    </button>
+                    </IconButton>
                 </Show>
             </div>
             <div class={"justify-center flex flex-col title m-12 mt-0"}>
