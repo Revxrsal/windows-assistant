@@ -16,7 +16,12 @@ export default function ProcessRunningForm(props: BlockFormProps<ProcessRunningD
     }
 
     return (
-        <BlockForm configProps={props} title={"When app starts"} submit={submit} disabled={false}>
+        <BlockForm
+            configProps={props}
+            title={"When app starts"}
+            submit={submit}
+            disabled={path().length == 0}
+        >
             <FileInput
                 path={path}
                 setPath={setPath}
