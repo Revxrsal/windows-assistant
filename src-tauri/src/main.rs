@@ -7,6 +7,7 @@ use action::{
     beep::beep,
     file::{pick_file, run_file},
     url::open_browser,
+    background::set_background,
 };
 use condition::{
     battery::{get_battery, is_charging},
@@ -36,6 +37,7 @@ fn main() {
             is_charging,
             is_combination_pressed,
             is_process_running,
+            set_background
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
